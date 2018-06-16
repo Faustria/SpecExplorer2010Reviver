@@ -1,0 +1,2746 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SpecExplorer.ObjectModel</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultExtensions">
+            <summary>
+             A class used to persist exploration result extension.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExplorationResultExtensions.Signature">
+            <summary>
+            Signature
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExplorationResultExtensions.IgnoreSignature">
+            <summary>
+            Whether the exploration result's signature should be ignored.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.IPostProcessor">
+            <summary>
+            Spec Explorer can be extended to allow a customized implementation of test code
+            generation. For example, instead of the default process of generating C# test cases
+            from exploration results, a user-provided implementation could generate a system of
+            XML files that represent the test sequence and test oracles. Such a customized
+            implementation involves coding and compiling a DLL that exposes an object implementing
+            the IPostProcessor interface. In implementing this Spec Explorer-declared interface,
+            a public PostProcess method and a Description property are exposed. The DLL is then
+            copied to a pre-defined Extensions folder in the Spec Explorer installation folder
+            hierarchy. In that folder, Spec Explorer can discover such user-provided post
+            processing DLLs. Multiple objects implementing IPostProcessor are supported in one
+            post processor DLL. To ensure the proper discoverability of an IPostProcessor object,
+            it must expose a constructor taking no parameter. The PostProcess method accepts a
+            reference to a Spec Explorer transition system and does the work of customized processing.
+            
+            With such user-provided DLLs in place, Spec Explorer can discover them and dynamically.
+            extend its menu system to allow selective invocation of the post processing. A given
+            post processor object exposes a Description property whose get method returns the
+            string used for an associated new menu item. These post processing menu choices are
+            accessible via the context menu in the Exploration Manager. This pop-up menu is
+            obtained by right clicking on a machine test suite entry. The context menu has a
+            "Perform User Task" choice. This choice has a dynamically created sub menu containing
+            the choices for the user-provided post processors. The menu items for those choices
+            were obtained by Spec Explorer from the various post processor Description properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.IPostProcessor.PostProcess(System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.TransitionSystem},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Post processing executed
+            </summary>
+            <param name="transitionSystems">The transition system collection to be post-processed.</param>
+            <param name="environment">The environment properties provided by Spec Explorer. Current built-in properties: environment["WorkingDirectory"] indicates the current working directory. </param>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.IPostProcessor.Description">
+            <summary>
+            Displayed description of the user customized post processing
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.PostProcessorException">
+            <summary>
+            An exception used for customized processing to report errors, Spec Explorer 
+            will catch PostProcessorException thrown in Process method and report its message 
+            in Error List Window and Output Window.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.PostProcessorException.#ctor">
+            <summary>
+            Construct Post Processor exception
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.PostProcessorException.#ctor(System.String)">
+            <summary>
+            Construct Post Processor exception
+            </summary>
+            <param name="message">The message text.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.PostProcessorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Construct Post Processor exception
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.PostProcessorException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Construct Post Processor exception
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ExpressionType">
+            <summary>
+            Describes the node types for the nodes of an expression tree.
+            This type must be consistent with <see cref="T:System.Linq.Expressions.ExpressionType"/>
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Add">
+            <summary>
+            A node that represents arithmetic addition without overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.AddChecked">
+            <summary>
+            A node that represents arithmetic addition with overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.And">
+            <summary>
+            A node that represents a bitwise AND operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.AndAlso">
+            <summary>
+            A node that represents a short-circuiting conditional AND operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.ArrayLength">
+            <summary>
+            A node that represents getting the length of a one-dimensional array.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.ArrayIndex">
+            <summary>
+            A node that represents indexing into a one-dimensional array.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Call">
+            <summary>
+            A node that represents represents a method call.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Coalesce">
+            <summary>
+            A node that represents a null coalescing operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Conditional">
+            <summary>
+            A node that represents a conditional operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Constant">
+            <summary>
+            A node that represents an expression that has a constant value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Convert">
+            <summary>
+            A node that represents a cast or conversion operation. If the operation is a numeric conversion, it overflows silently if the converted value does not fit the target type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.ConvertChecked">
+            <summary>
+            A node that represents a cast or conversion operation. If the operation is a numeric conversion, an exception is thrown if the converted value does not fit the target type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Divide">
+            <summary>
+            A node that represents arithmetic division.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Equal">
+            <summary>
+            A node that represents an equality comparison.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.ExclusiveOr">
+            <summary>
+            A node that represents a bitwise XOR operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.GreaterThan">
+            <summary>
+            A node that represents a "greater than" numeric comparison.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.GreaterThanOrEqual">
+            <summary>
+            A node that represents a "greater than or equal" numeric comparison.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Invoke">
+            <summary>
+            A node that represents applying a delegate or lambda expression to a list of argument expressions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Lambda">
+            <summary>
+            A node that represents a lambda expression.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.LeftShift">
+            <summary>
+            A node that represents a bitwise left-shift operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.LessThan">
+            <summary>
+            A node that represents a "less than" numeric comparison.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.LessThanOrEqual">
+            <summary>
+            A node that represents a "less than or equal" numeric comparison.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.ListInit">
+            <summary>
+            A node that represents creating a new IEnumerable object and initializing it from a list of elements.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.MemberAccess">
+            <summary>
+            A node that represents reading from a field or property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.MemberInit">
+            <summary>
+            A node that represents creating a new object and initializing one or more of its members.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Modulo">
+            <summary>
+            A node that represents an arithmetic remainder operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Multiply">
+            <summary>
+            A node that represents arithmetic multiplication without overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.MultiplyChecked">
+            <summary>
+            A node that represents arithmetic multiplication with overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Negate">
+            <summary>
+            A node that represents an arithmetic negation operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.UnaryPlus">
+            <summary>
+            A node that represents a unary plus operation. The result of a predefined unary plus operation is simply the value of the operand, but user-defined implementations may have non-trivial results.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.NegateChecked">
+            <summary>
+            A node that represents an arithmetic negation operation that has overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.New">
+            <summary>
+            A node that represents calling a constructor to create a new object.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.NewArrayInit">
+            <summary>
+            A node that represents creating a new one-dimensional array and initializing it from a list of elements.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.NewArrayBounds">
+            <summary>
+            A node that represents creating a new array where the bounds for each dimension are specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Not">
+            <summary>
+            A node that represents a bitwise complement operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.NotEqual">
+            <summary>
+            A node that represents an inequality comparison.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Or">
+            <summary>
+            A node that represents a bitwise OR operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.OrElse">
+            <summary>
+            A node that represents a short-circuiting conditional OR operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Parameter">
+            <summary>
+            A node that represents a reference to a parameter or variable defined in the context of the expression.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Power">
+            <summary>
+            A node that represents raising a number to a power.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Quote">
+            <summary>
+            A node that represents an expression that has a constant value of type Expression. A Quote node can contain references to parameters defined in the context of the expression it represents.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.RightShift">
+            <summary>
+            A node that represents a bitwise right-shift operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Subtract">
+            <summary>
+            A node that represents arithmetic subtraction without overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.SubtractChecked">
+            <summary>
+            A node that represents arithmetic subtraction with overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.TypeAs">
+            <summary>
+            A node that represents an explicit reference or boxing conversion where null reference (Nothing in Visual Basic) is supplied if the conversion fails.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.TypeIs">
+            <summary>
+            A node that represents a type test.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Assign">
+            <summary>
+            A node that represents an assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Block">
+            <summary>
+            A node that represents a block of expressions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.DebugInfo">
+            <summary>
+            A node that represents a debugging information.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Decrement">
+            <summary>
+            A node that represents a unary decrement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Dynamic">
+            <summary>
+            A node that represents a dynamic operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Default">
+            <summary>
+            A node that represents a default value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Extension">
+            <summary>
+            A node that represents an extension expression.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Goto">
+            <summary>
+            A node that represents a goto.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Increment">
+            <summary>
+            A node that represents a unary increment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Index">
+            <summary>
+            A node that represents an index operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Label">
+            <summary>
+            A node that represents a label.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.RuntimeVariables">
+            <summary>
+            A node that represents a list of runtime variables.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Loop">
+            <summary>
+            A node that represents a loop.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Switch">
+            <summary>
+            A node that represents a switch operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Throw">
+            <summary>
+            A node that represents a throwing of an exception.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Try">
+            <summary>
+            A node that represents a try-catch expression.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.Unbox">
+            <summary>
+            A node that represents an unbox value type operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.AddAssign">
+            <summary>
+            A node that represents an arithmetic addition compound assignment without overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.AndAssign">
+            <summary>
+            A node that represents a bitwise AND compound assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.DivideAssign">
+            <summary>
+            A node that represents an arithmetic division compound assignment .
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.ExclusiveOrAssign">
+            <summary>
+            A node that represents a bitwise XOR compound assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.LeftShiftAssign">
+            <summary>
+            A node that represents a bitwise left-shift compound assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.ModuloAssign">
+            <summary>
+            A node that represents an arithmetic remainder compound assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.MultiplyAssign">
+            <summary>
+            A node that represents arithmetic multiplication compound assignment without overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.OrAssign">
+            <summary>
+            A node that represents a bitwise OR compound assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.PowerAssign">
+            <summary>
+            A node that represents raising a number to a power compound assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.RightShiftAssign">
+            <summary>
+            A node that represents a bitwise right-shift compound assignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.SubtractAssign">
+            <summary>
+            A node that represents arithmetic subtraction compound assignment without overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.AddAssignChecked">
+            <summary>
+            A node that represents an arithmetic addition compound assignment with overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.MultiplyAssignChecked">
+            <summary>
+            A node that represents arithmetic multiplication compound assignment with overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.SubtractAssignChecked">
+            <summary>
+            A node that represents arithmetic subtraction compound assignment with overflow checking.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.PreIncrementAssign">
+            <summary>
+            A node that represents an unary prefix increment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.PreDecrementAssign">
+            <summary>
+            A node that represents an unary prefix decrement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.PostIncrementAssign">
+            <summary>
+            A node that represents an unary postfix increment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.PostDecrementAssign">
+            <summary>
+            A node that represents an unary postfix decrement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.TypeEqual">
+            <summary>
+            A node that represents a exact type test.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.OnesComplement">
+            <summary>
+            A node that represents a ones complement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.IsTrue">
+            <summary>
+            A node that represents a true condition value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ExpressionType.IsFalse">
+            <summary>
+            A node that represents a false condition value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Build the LINQ expression from the serialized form.
+            </summary>
+            <param name="typeResolver">A type resolver.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpression.ToExpression">
+            <summary>
+            Build the LINQ expression from the serialized form, using a default type resolver.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpression.FromExpression(System.Linq.Expressions.Expression)">
+            <summary>
+            An abstract method which each serializable variant implements to initialize itself from a LINQ expression
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableExpression.NodeType">
+            <summary>
+            The node type
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableExpression.Key">
+            <summary>
+            Allows to attach a key to an expression. Maybe present or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableExpression.Type">
+            <summary>
+            The type of expression.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableUnaryExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ unary expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableUnaryExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableUnaryExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableUnaryExpression.Operand">
+            <summary>
+            The operand.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableBinaryExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ binary expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableBinaryExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableBinaryExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableBinaryExpression.Left">
+            <summary>
+            The left operand.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableBinaryExpression.Right">
+            <summary>
+            The right operand.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableTypeBinaryExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ type binary expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableTypeBinaryExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableTypeBinaryExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableTypeBinaryExpression.Expression">
+            <summary>
+            The operand.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableTypeBinaryExpression.TypeOperand">
+            <summary>
+            The type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableConditionalExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ conditional expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableConditionalExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableConditionalExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableConditionalExpression.Test">
+            <summary>
+            The test expression.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableConditionalExpression.IfTrue">
+            <summary>
+            The value of the test is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableConditionalExpression.IfFalse">
+            <summary>
+            The value of the test is false.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableConstantExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ constant expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableConstantExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableConstantExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableConstantExpression.Value">
+            <summary>
+            The constant value represented as a string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableConstantExpression.ValueType">
+            <summary>
+            The constant value's type
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableEnumExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ enum expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableEnumExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableEnumExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableEnumExpression.Value">
+            <summary>
+            The constant value represented as a string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableEnumExpression.ValueType">
+            <summary>
+            The constant value's type
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ parameter expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression.Name">
+            <summary>
+            The name of the parameter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression.ParameterType">
+            <summary>
+            The type of the parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ member expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberExpression.Expression">
+            <summary>
+            Gets the containing object of the field or property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberExpression.Member">
+            <summary>
+             Gets the field or property name to be accessed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMethodCallExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ call expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMethodCallExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMethodCallExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMethodCallExpression.Method">
+            <summary>
+            Gets the called method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMethodCallExpression.Object">
+            <summary>
+            Gets the receiving object of the method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMethodCallExpression.Arguments">
+            <summary>
+            Gets the arguments to the called method.
+            </summary>     
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableLambdaExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ lambda expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableLambdaExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableLambdaExpression.ToString">
+            <summary>
+            Convert to string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableLambdaExpression.Parameters">
+            <summary>
+            Gets the parameters of the lambda expression.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableLambdaExpression.Body">
+            <summary>
+            Gets the body of the lambda expression.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableNewExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ new expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableNewExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableNewExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableNewExpression.Constructor">
+            <summary>
+            Gets the called constructor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableNewExpression.Arguments">
+            <summary>
+            Gets the arguments to the constructor.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableNewArrayExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ new array expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableNewArrayExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableNewArrayExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableNewArrayExpression.Expressions">
+            <summary>
+            Gets the bounds of the array if the value of the System.Linq.Expressions.Expression.NodeType
+            property is System.Linq.Expressions.ExpressionType.NewArrayBounds, or the
+            values to initialize the elements of the new array if the value of the System.Linq.Expressions.Expression.NodeType
+            property is System.Linq.Expressions.ExpressionType.NewArrayInit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableNewArrayExpression.ArrayType">
+            <summary>
+            Gets the array type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableInvocationExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ invocation expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableInvocationExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableInvocationExpression.ToString">
+            <summary>
+            Convert to string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableInvocationExpression.Expression">
+            <summary>
+            Gets the delegate or lambda expression to be applied.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableInvocationExpression.Arguments">
+            <summary>
+            Gets the arguments that the delegate is applied to
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInitExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ member init expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInitExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInitExpression.ToString">
+            <summary>
+            Convert to string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInitExpression.NewExpression">
+            <summary>
+            Gets the expression that represents the constructor call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInitExpression.Bindings">
+            <summary>
+            Gets the bindings that describe how to initialize the members of the newly
+             created object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberBinding">
+            <summary>
+            A binary and XML serializable representation of a LINQ member binding
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberBinding.ToMemberBinding(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to a LINQ member binding.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberBinding.Member">
+            <summary>
+            Gets the field or property to be initialized.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberBinding.BindingType">
+            <summary>
+            Gets the type of binding that is represented.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberAssignment">
+            <summary>
+            A binary and XML serializable representation of a LINQ member assignment
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberAssignment.ToMemberBinding(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ member binding.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberAssignment.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberAssignment.Expression">
+            <summary>
+             Gets the expression to assign to the field or property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberListBinding">
+            <summary>
+            A binary and XML serializable representation of a LINQ list binding
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberListBinding.ToMemberBinding(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to member binding.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberListBinding.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberListBinding.Initializers">
+            <summary>
+            Gets the element initializers for initializing a collection member of a newly
+             created object. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberMemberBinding">
+            <summary>
+            A binary and XML serializable representation of a recursive LINQ member binding
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberMemberBinding.ToMemberBinding(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ member binding.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberMemberBinding.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberMemberBinding.Bindings">
+            <summary>
+             Gets the bindings that describe how to initialize the members of a member.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableElementInit">
+            <summary>
+            A binary and XML serializable representation of a LINQ element initialization
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableElementInit.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableElementInit.AddMethod">
+            <summary>
+            Gets the instance method that is used to add an element to an System.Collections.IEnumerable
+             collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableElementInit.Arguments">
+            <summary>
+            Gets the collection of arguments that are passed to a method that adds an
+             element to an System.Collections.IEnumerable collection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableListInitExpression">
+            <summary>
+            A binary and XML serializable representation of a LINQ list init expression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableListInitExpression.ToExpression(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to LINQ expression
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableListInitExpression.ToString">
+            <summary>
+            Convert to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableListInitExpression.NewExpression">
+            <summary>
+             Gets the expression that contains a call to the constructor of a collection
+              type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableListInitExpression.Initializers">
+            <summary>
+            Gets the element initializers that are used to initialize a collection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor">
+            <summary>
+            visitor of SerializableExpression
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.Visit(Microsoft.SpecExplorer.ObjectModel.SerializableExpression)">
+            <summary>
+            visit the whole tree
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitUnaryExpression(Microsoft.SpecExplorer.ObjectModel.SerializableUnaryExpression)">
+            <summary>
+            visit SerializableUnaryExpression
+            </summary>
+            <param name="unary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitBinaryExpression(Microsoft.SpecExplorer.ObjectModel.SerializableBinaryExpression)">
+            <summary>
+            visit SerializableBinaryExpression
+            </summary>
+            <param name="binary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitTypeBinaryExpression(Microsoft.SpecExplorer.ObjectModel.SerializableTypeBinaryExpression)">
+            <summary>
+            visit SerializableTypeBinaryExpression
+            </summary>
+            <param name="typeBinary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitConditionalExpression(Microsoft.SpecExplorer.ObjectModel.SerializableConditionalExpression)">
+            <summary>
+            visit SerializableConditionalExpression
+            </summary>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitConstantExpression(Microsoft.SpecExplorer.ObjectModel.SerializableConstantExpression)">
+            <summary>
+            visit SerializableConstantExpression
+            </summary>
+            <param name="constant"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitEnumExpression(Microsoft.SpecExplorer.ObjectModel.SerializableEnumExpression)">
+            <summary>
+            visit SerializableEnumExpression
+            </summary>
+            <param name="enumeration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitParameterExpression(Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression)">
+            <summary>
+            visit SerializableParameterExpression
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitMemberExpression(Microsoft.SpecExplorer.ObjectModel.SerializableMemberExpression)">
+            <summary>
+            visit SerializableMemberExpression
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitMethodCallExpression(Microsoft.SpecExplorer.ObjectModel.SerializableMethodCallExpression)">
+            <summary>
+            visit SerializableMethodCallExpression
+            </summary>
+            <param name="methodCall"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitNewExpression(Microsoft.SpecExplorer.ObjectModel.SerializableNewExpression)">
+            <summary>
+            visit SerializableNewExpression
+            </summary>
+            <param name="newExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitNewArrayExpression(Microsoft.SpecExplorer.ObjectModel.SerializableNewArrayExpression)">
+            <summary>
+            Visit SerializableNewArrayExpression
+            </summary>
+            <param name="newArray"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableExpressionVisitor.VisitMemberInitExpression(Microsoft.SpecExplorer.ObjectModel.SerializableMemberInitExpression)">
+            <summary>
+            visit SerializableMemberInitExpression
+            </summary>
+            <param name="memberInit"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo">
+            <summary>
+            A binary and XML serializable representation of a member.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.#ctor">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Equals(System.Object)">
+            <summary>
+            Equality, based on headers.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.GetHashCode">
+            <summary>
+            Hash code based on headers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.ToString">
+            <summary>
+            Convert to string. Returns the header.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.ToMemberInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to a member info.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Type(System.String,System.Boolean,System.TypeCode,Microsoft.SpecExplorer.ObjectModel.SerializableType)">
+            <summary>
+            Create a serializable type.
+            </summary>
+            <param name="fullName"></param>
+            <param name="isPublic"></param>
+            <param name="typeCode"></param>
+            <param name="baseType"></param>   
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Method(Microsoft.SpecExplorer.ObjectModel.SerializableType,System.Boolean,System.Boolean,System.String,Microsoft.SpecExplorer.ObjectModel.SerializableType[],Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo[],Microsoft.SpecExplorer.ObjectModel.SerializableType,Microsoft.SpecExplorer.ObjectModel.AssociationReference)">
+            <summary>
+            Create a serializable method.
+            </summary>
+            <param name="declaringType"></param>
+            <param name="isStatic"></param>
+            <param name="name"></param>
+            <param name="isPublic"></param>
+            <param name="typeParameters"></param>
+            <param name="parameters"></param>
+            <param name="returnType"></param>
+            <param name="associationReference"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Parameter(Microsoft.SpecExplorer.ObjectModel.SerializableType,System.String,System.Boolean)">
+            <summary>
+            Create a serializable parameter.
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <param name="isOut"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Event(Microsoft.SpecExplorer.ObjectModel.SerializableType,System.Boolean,System.Boolean,System.String,Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo[],Microsoft.SpecExplorer.ObjectModel.SerializableType,System.Boolean)">
+            <summary>
+            Create a serializable event.
+            </summary>
+            <param name="declaringType"></param>
+            <param name="isStatic"></param>
+            <param name="isPublic"></param>
+            <param name="name"></param>
+            <param name="parameters"></param>
+            <param name="returnType"></param>
+            <param name="isPreConstraintCheck"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Constructor(Microsoft.SpecExplorer.ObjectModel.SerializableType,System.Boolean,System.Boolean,Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo[])">
+            <summary>
+            Create a serializable constructor.
+            </summary>
+            <param name="declaringType"></param>
+            <param name="isStatic"></param>
+            <param name="isPublic"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Field(Microsoft.SpecExplorer.ObjectModel.SerializableType,System.Boolean,System.Boolean,System.String,Microsoft.SpecExplorer.ObjectModel.SerializableType)">
+            <summary>
+            Create a serializable field.
+            </summary>
+            <param name="declaringType"></param>
+            <param name="isPublic"></param>
+            <param name="isStatic"></param>
+            <param name="name"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Property(Microsoft.SpecExplorer.ObjectModel.SerializableType,System.Boolean,System.Boolean,System.String,Microsoft.SpecExplorer.ObjectModel.SerializableType)">
+            <summary>
+            Create a serializable property.
+            </summary>
+            <param name="declaringType"></param>
+            <param name="isPublic"></param>
+            <param name="isStatic"></param>
+            <param name="name"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.DeclaringType">
+            <summary>
+            The declaring type of this member.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Name">
+            <summary>
+            The simple name of this member.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.IsStatic">
+            <summary>
+            Whether this is a static member.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.IsPublic">
+            <summary>
+            Whether this is a public member.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo.Header">
+            <summary>
+            A unique representation of the member as a string.
+            Uniqueness is determined by .Net naming rules. For instance,
+            whether a member is static or not, will not be represented,
+            as static and non-static members with same name/parameters cannot
+            co-exist in one declaring type. And for methods, the return
+            type will not be represented, as different methods with same name
+            and parameters cannot co-exist in one type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableType">
+            <summary>
+            A binary and XML serializable representation of a type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableType.#ctor">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.SpecExplorer.ObjectModel.SerializableType"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableType.ToType(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to reflection type using given type resolver.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableType.ToType">
+            <summary>
+            Convert to reflection type using default type resolver.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableType.ToMemberInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to member info.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableType.FullName">
+            <summary>
+            The full name (without assembly) of the type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableType.BaseType">
+            <summary>
+            Base type of the type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableType.IsByRef">
+            <summary>
+            Whether this is a reference type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableType.TypeCode">
+            <summary>
+            Type code of this type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableType.ElementType">
+            <summary>
+            If this is by-ref type, return its element type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableFieldInfo">
+            <summary>
+            A binary and XML serializable representation of a field.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableFieldInfo.ToFieldInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to reflection field using type resolver.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableFieldInfo.ToMemberInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to member info.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableFieldInfo.Type">
+            <summary>
+            The type of the field.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializablePropertyInfo">
+            <summary>
+            A binary and XML serializable representation of a property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializablePropertyInfo.ToPropertyInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to reflection property using type resolver.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializablePropertyInfo.ToMemberInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to member info.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializablePropertyInfo.PropertyType">
+            <summary>
+            The type of the property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMethodBase">
+            <summary>
+            A binary and XML serializable representation of a method base.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMethodBase.Parameters">
+            <summary>
+            The parameter types.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo">
+            <summary>
+            A binary and XML serializable representation of a parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo.Equals(System.Object)">
+            <summary>
+            Equality.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo.GetHashCode">
+            <summary>
+            Hashcode.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo.Type">
+            <summary>
+            The parameter type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo.Name">
+            <summary>
+            The parameter name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableParameterInfo.IsOut">
+            <summary>
+            Whether it is an out parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.AssociationReferenceKind">
+            <summary>
+            Describes the kind of an association reference.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.AssociationReferenceKind.GetMethod">
+            <summary>
+            The method is a property getter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.AssociationReferenceKind.SetMethod">
+            <summary>
+            The method is a property setter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.AssociationReference">
+            <summary>
+            A type represents property association reference of a get or set method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.AssociationReference.Association">
+            <summary>
+            The association.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.AssociationReference.Kind">
+            <summary>
+            The association kind.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableMethodInfo">
+            <summary>
+            A binary and XML serializable representation of a method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMethodInfo.ToMethodInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to reflection method using type resolver.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableMethodInfo.ToMemberInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to member info.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMethodInfo.TypeParameters">
+            <summary>
+            The type parameter types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMethodInfo.AssociationReference">
+            <summary>
+            The association references of this method.
+            It is non-null only if this method is a get or set method of property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableMethodInfo.ReturnType">
+            <summary>
+            The return type, or null, if method is void.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableConstructorInfo">
+            <summary>
+            A binary and XML serializable representation of a constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableConstructorInfo.ToConstructorInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to reflection method using type resolver.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableConstructorInfo.ToMemberInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to member info.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SerializableEventInfo">
+            <summary>
+            A binary and XML serializable representation of an event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableEventInfo.ToEventInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to reflection method using type resolver.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SerializableEventInfo.ToMemberInfo(System.Func{System.String,System.Type})">
+            <summary>
+            Convert to member info.
+            </summary>
+            <param name="typeResolver"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableEventInfo.Parameters">
+            <summary>
+            The parameter types of the fire method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableEventInfo.IsPreConstraintCheck">
+            <summary>
+            whether it's a special pre-constraint check action.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SerializableEventInfo.ReturnType">
+            <summary>
+            The return type of the fire method, or null, if method is void.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers">
+            <summary>
+            A class which contains extension methods to convert LINQ expressions and reflection data into
+            serializable form.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Linq.Expressions.Expression)">
+            <summary>
+            Converts a LINQ expression into a serializable representation.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.DefaultTypeResolver(System.String)">
+            <summary>
+            A default type resolver. Queries assemblies loaded into current appdomain.
+            </summary>
+            <param name="typeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToLinqExpressionType(Microsoft.SpecExplorer.ObjectModel.ExpressionType)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToExpressionType(System.Linq.Expressions.ExpressionType)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Type)">
+            <summary>
+            Converts a reflection type into a serializable representation.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.MakeTypeName(System.Type)">
+            <summary>
+            Make type name, minimizing instantiation information
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Reflection.MemberInfo)">
+            <summary>
+            Converts a reflection member into a serializable representation.
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Reflection.MethodInfo)">
+            <summary>
+            Converts a reflection method into a serializable representation.
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Reflection.ParameterInfo)">
+            <summary>
+            Converts a reflection parameter into a serializable representation.
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Reflection.EventInfo)">
+            <summary>
+            Converts a reflection event into a serializable representation.
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Reflection.ConstructorInfo)">
+            <summary>
+            Converts a reflection constructor into a serializable representation.
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Reflection.FieldInfo)">
+            <summary>
+            Converts a reflection field into a serializable representation.
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ObjectModelHelpers.ToSerializable(System.Reflection.PropertyInfo)">
+            <summary>
+            Converts a reflection property into a serializable representation.
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.Internalizer`1">
+            <summary>
+            A class implementing an internalizer.
+            </summary>
+            <typeparam name="V"></typeparam>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.Internalizer`1.#ctor">
+            <summary>
+            Create a new internalizer, using V default equality.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.Internalizer`1.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Create a new internalizer using the given equality comparer on V.
+            </summary>
+            <param name="comparer"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.Internalizer`1.Intern(`0)">
+            <summary>
+            Intern a value v.
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.TransitionSystemElement">
+            <summary>
+            The base class of all transition system elements. 
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ProbeValueKind">
+            <summary>
+            The kind of probe value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ProbeValueKind.Normal">
+            <summary>
+            Normal kind probe value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ProbeValueKind.Exception">
+            <summary>
+            Exception kind probe value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.Probe">
+            <summary>
+            A class representing a probe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Probe.Name">
+            <summary>
+            The name of this probe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Probe.Value">
+            <summary>
+            The value of this probe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Probe.Type">
+            <summary>
+            The type of this probe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Probe.TypeKey">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Probe.Kind">
+            <summary>
+            The probe value kind.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ActionSymbol">
+            <summary>
+            A class representing an action symbol.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ActionSymbol.Kind">
+            <summary>
+            The kind of this action
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ActionSymbol.Member">
+            <summary>
+            The member (method, constructor, or event) to which
+            this action symbol is associated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ActionSymbol.MemberKey">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind">
+            <summary>
+            The kind of an action.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind.Invocation">
+            <summary>
+            A regular method invocation (control).
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind.Call">
+            <summary>
+            The begin of a regular method invocation (control).
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind.Return">
+            <summary>
+            The normal end of a regular method invocation (observation).
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind.Throw">
+            <summary>
+            The end of a regular method invocation by throwing and exception.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind.Event">
+            <summary>
+            An event invocation (observation).
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind.PreConstraintCheck">
+            <summary>
+            A check action for pre-constraint.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ActionInvocation">
+            <summary>
+            An class representing an action invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ActionInvocation.Symbol">
+            <summary>
+            The action symbol.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ActionInvocation.Arguments">
+            <summary>
+            The arguments of the action.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ActionInvocation.ArgumentKeys">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ActionInvocation.Text">
+            <summary>
+            The text representation
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.State">
+            <summary>
+            A class representing a state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.State.TryGetProbesByName(System.String,Microsoft.SpecExplorer.ObjectModel.Probe[]@)">
+            <summary>
+            Try to get probes by name.
+            </summary>
+            <param name="probeName"></param>
+            <param name="outProbes"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.State.Label">
+            <summary>
+            A label of this state that can identify a state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.State.Flags">
+            <summary>
+            The flags of this state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.State.IsVirtual">
+            <summary>
+            Whether this state is a invisible state. This property shouldn't be used anymore and will be removed later.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.State.Description">
+            <summary>
+            A description of this state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.State.RepresentativeState">
+            <summary>
+            A state that represents this state in a way determined by StateRelationKind.
+            Can be null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.State.RelationKind">
+            <summary>
+            The kind of relation between this state and its representative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.State.Probes">
+            <summary>
+            Probes on this state.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.StateFlags">
+            <summary>
+            A type representing the targetFlags of a state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.None">
+            <summary>
+            No flags set.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.Dead">
+            <summary>
+            Whether this is a dead state (no outgoing path reaches an accepting state)
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.Accepting">
+            <summary>
+            Whether this is an accepting state (a test suite has been passed in this state). 
+            State kind flag. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.Error">
+            <summary>
+            Whether this is an error state (an assertion is violated when this state is reached).
+            State kind flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.StepBoundStopped">
+            <summary>
+            Leads to a state in which exploration stopped because of step bound.
+            State stopped reason flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.StateBoundStopped">
+            <summary>
+            Leads to a state in which exploration stopped because of a state bound.
+            State stopped reason flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.PathDepthBoundStopped">
+            <summary>
+            Leads to a state in which exploration stopped because of a path bound.
+            State stopped reason flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.StepsPerStateBoundStopped">
+            <summary>
+            Leads to a state in which exploration stopped because of step per state bound.
+            State stopped reason flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.UserStopped">
+            <summary>
+            Leads to a state in which exploration has been stopped by the user.
+            State stopped reason flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.NonAcceptingEnd">
+            <summary>
+            Whether this is a non-accepting state with no outgoing steps.
+            State stopped reason flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.ExplorationErrorBoundStopped">
+            <summary>
+            Leads to a state in which exploration stopped because of exploration error bound.
+            State stopped reason flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.BoundStopped">
+            <summary>
+            All bound stopped flags.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateFlags.StoppedReasonFlags">
+            <summary>
+            Set all state stopped reason flags.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.StateRelationKind">
+            <summary>
+            Possible kinds of relation between one state and its representative.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateRelationKind.None">
+            <summary>
+            This state has no representative.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateRelationKind.Subsumed">
+            <summary>
+            This state is subsumed by its representative.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.StateRelationKind.Equivalent">
+            <summary>
+            This state is equivalent to its representative.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.Constraint">
+            <summary>
+            A class representing a constraint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Constraint.Expression">
+            <summary>
+            Expression representing this constraint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Constraint.ExpressionKey">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Constraint.Text">
+            <summary>
+            Textual expression representing this constraint.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.Transition">
+            <summary>
+            A class describing a state transition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.Source">
+            <summary>
+            The label of the source state of the transition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.Target">
+            <summary>
+            The label of the target state of the transition. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.Action">
+            <summary>
+            The invocation of this transition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.PreConstraints">
+            <summary>
+            Pre Constraints associated with this transition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.PostConstraints">
+            <summary>
+            Post Constraints associated with this transition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.VariablesToUnbind">
+            <summary>
+            Variables to unbind at the end of this transition (after constraints have been evaluated).
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.VariablesToUnbindKeys">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.CapturedRequirements">
+            <summary>
+            The labels of the captured requirements of the transition. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Transition.AssumeCapturedRequirements">
+            <summary>
+            The labels of the assumed captured requirements of the transition
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ConfigSwitch">
+            <summary>
+            Supports the serialization infrastructure. Do not use this type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ConfigSwitch.Name">
+            <summary>
+            Switch name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ConfigSwitch.Value">
+            <summary>
+            Switch value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.TransitionSystem">
+            <summary>
+            A class representing the states and transitions in an exploration result, 
+            together with their properties and contents.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.GetSwitch(System.String)">
+            <summary>
+            Get the value of a switch.
+            </summary>
+            <param name="name">Switch name.</param>
+            <returns>Switch value or null, if switch is not present.</returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.IsPlaceholder(Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression)">
+            <summary>
+            Determine whether a variable represents a placeholder ('_').
+            </summary>
+            <param name="var"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.LinkSystem(System.Boolean)">
+            <summary>
+              Link the transition system to all elements such that they resolve table references
+            </summary>
+            <param name="initializeFromKeys"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.Probe(System.String,System.String,Microsoft.SpecExplorer.ObjectModel.SerializableType,Microsoft.SpecExplorer.ObjectModel.ProbeValueKind)">
+            <summary>
+            Create a probe element.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <param name="type"></param>
+            <param name="kind"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ActionSymbol(Microsoft.SpecExplorer.ObjectModel.ActionSymbolKind,Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo)">
+            <summary>
+            Create an action symbol element.
+            </summary>
+            <param name="kind"></param>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ActionInvocation(Microsoft.SpecExplorer.ObjectModel.ActionSymbol,System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.SerializableExpression},System.String)">
+            <summary>
+            Create an action invocation element.
+            </summary>
+            <param name="symbol"></param>
+            <param name="arguments"></param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.Transition(System.String,Microsoft.SpecExplorer.ObjectModel.ActionInvocation,System.String,System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.Constraint},System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.Constraint},System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Create a transition element.
+            </summary>
+            <param name="source"></param>
+            <param name="action"></param>
+            <param name="target"></param>
+            <param name="preConstraints"></param>
+            <param name="postConstraints"></param>
+            <param name="variablesToUnbind"></param>
+            <param name="requirements"></param>
+            <param name="assumedRequirements"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.State(System.String,System.Boolean,System.String,Microsoft.SpecExplorer.ObjectModel.StateFlags,System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.Probe})">
+            <summary>
+            Create a state element.
+            </summary>
+            <param name="label"></param>
+            <param name="isVirtual"></param>
+            <param name="description"></param>
+            <param name="flags"></param>
+            <param name="probes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.Constraint(Microsoft.SpecExplorer.ObjectModel.SerializableExpression,System.String)">
+            <summary>
+            Create a constraint element.
+            </summary>
+            <param name="expression"></param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ConfigSwitch(System.String,System.String)">
+            <summary>
+            Create a config switch element.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.Create(System.String,System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.ConfigSwitch},System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.SerializableMemberInfo},System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.SerializableType},System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.SerializableParameterExpression},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.State},System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.Transition})">
+            <summary>
+            Create a transition system.
+            </summary>
+            <param name="name"></param>
+            <param name="switches"></param>
+            <param name="actionMembers"></param>
+            <param name="adapterTypes"></param>
+            <param name="variables"></param>
+            <param name="initialStates"></param>
+            <param name="states"></param>
+            <param name="transitions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.GetStateFromLabel(System.String)">
+            <summary>
+            Get state according to its string label representation.
+            </summary>
+            <param name="label"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.TryGetIncomingTransitions(Microsoft.SpecExplorer.ObjectModel.State,System.Collections.Generic.List{Microsoft.SpecExplorer.ObjectModel.Transition}@)">
+            <summary>
+            Get all incoming transitions for one given state.
+            </summary>
+            <param name="state"></param>
+            <param name="transitions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.TryGetOutgoingTransitions(Microsoft.SpecExplorer.ObjectModel.State,System.Collections.Generic.List{Microsoft.SpecExplorer.ObjectModel.Transition}@)">
+            <summary>
+            Get all outgoing transitions for one given state
+            </summary>
+            <param name="state"></param>
+            <param name="transitions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ContainsCallTransition(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            Check whether the node contains call transition.
+            </summary>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ContainsEventTransition(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            Check whether the state contains event transition.
+            </summary>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ContainsReturnTransition(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            Check whether the state contains return transition.
+            </summary>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.TryGetUniqueReturnTransition(Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.ObjectModel.Transition@)">
+            <summary>
+            Find unique return transition followed by a call transition
+            </summary>
+            <param name="callTransition"></param>
+            <param name="returnTransition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.TryGetUniqueCallTransition(Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.ObjectModel.Transition@)">
+            <summary>
+            Find unique call transition of a return transition
+            </summary>
+            <param name="returnTransition"></param>
+            <param name="callTransition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.IsAcceptingState(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            Check whether one state is accepting state or not.
+            </summary>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.IsErrorState(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            Check whehter one state is error state or not.
+            </summary>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.IsEventTransition(Microsoft.SpecExplorer.ObjectModel.Transition)">
+            <summary>
+            Check whehter it's an event transition.
+            </summary>
+            <param name="transition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.IsCallTransition(Microsoft.SpecExplorer.ObjectModel.Transition)">
+            <summary>
+            Check whehter it's a call transition.
+            </summary>
+            <param name="transition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.IsReturnTransition(Microsoft.SpecExplorer.ObjectModel.Transition)">
+            <summary>
+            Check whehter it's a call transition.
+            </summary>
+            <param name="transition"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.Name">
+            <summary>
+            Name of this system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ConfigSwitches">
+            <summary>
+            Configuration switches.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.Variables">
+            <summary>
+            All variables used in transitions or assumptions in this system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.VariableKeys">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.InitialStates">
+            <summary>
+            The initial states of this system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.States">
+            <summary>
+            All states of this system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ActionMembers">
+            <summary>
+            Actions (methods, constructors, or events) associated with this system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ActionMemberKeys">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.AdapterTypes">
+            <summary>
+            Types which represent adapters.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.AdapterTypeKeys">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.Transitions">
+            <summary>
+            All transitions of this system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.MemberTable">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.TransitionSystem.ExpressionTable">
+            <summary>
+            For internal purposes only; supports the serialization infrastructure.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.Node">
+            <summary>
+            A class to represent a node in state content. It can be value, frame, thread, etc...
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.Node.#ctor(Microsoft.SpecExplorer.ObjectModel.NodeKind,System.Int32,System.Int32,System.Int32,Microsoft.SpecExplorer.ObjectModel.Node[])">
+            <summary>
+            Constructs a node which can represent a state, thread, stack frame, constraint or value.
+            </summary>
+            <param name="kind">Node kind.</param>
+            <param name="nameIndex">Node's display name index.</param>
+            <param name="typeIndex">Node's type index. Pass -1 if none.</param>
+            <param name="valueIndex">Node's value index. Pass -1 if none.</param>
+            <param name="subNodes">Sub nodes of this node. Pass <code>null</code> if none.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.Node.#ctor">
+            <summary>
+            Constructs a default instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.Node.GetHashCode">
+            <summary>
+            Calculates hash code for this node.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.Node.Equals(System.Object)">
+            <summary>
+            Value equality for this node.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.Kind">
+            <summary>
+            Kind of the node.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.NameIndex">
+            <summary>
+            Name index which points to the shared value table.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.NameIndexSpecified">
+            <summary>
+            This property is intended to be used by the XML serialization framework only.
+            </summary>
+            <remarks>
+            If equals to -1, it indicates this field is not used at all.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.TypeIndex">
+            <summary>
+            Type index which points to shared value table.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.TypeIndexSpecified">
+            <summary>
+            This property is intended to be used by the XML serialization framework only.
+            </summary>
+            <remarks>
+            If equals to -1, it indicates this field is not used at all.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.ValueIndex">
+            <summary>
+            Value index which points to shared value table.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.ValueIndexSpecified">
+            <summary>
+            This property is intended to be used by the XML serialization framework only.
+            </summary>
+            <remarks>
+            If equals to -1, it indicates this field is not used at all.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.Node.SubNodes">
+            <summary>
+            Sub nodes of this node.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.SharedEntitySet">
+            <summary>
+            A class to represent the shared entities which contains values shared among 
+            all states in a transition system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SharedEntitySet.#ctor(System.String[],Microsoft.SpecExplorer.ObjectModel.Node[],Microsoft.SpecExplorer.ObjectModel.Node[])">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.SpecExplorer.ObjectModel.SharedEntitySet"/>.
+            </summary>
+            <param name="sharedNodes">All shared nodes.</param>
+            <param name="sharedValues">All shared values.</param>
+            <param name="sharedObjects">All shared objects.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.SharedEntitySet.#ctor">
+            <summary>
+            For XML serialization only
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SharedEntitySet.SharedValues">
+            <summary>
+            Shared values.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SharedEntitySet.SharedNodes">
+            <summary>
+            Shared nodes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.SharedEntitySet.SharedObjects">
+            <summary>
+            Shared objects.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.NodeKind">
+            <summary>
+            Describes the kind of a node.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.State">
+            <summary>
+            The node represents a state.
+            </summary> 
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Thread">
+            <summary>
+            The node represents a thread.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Frame">
+            <summary>
+            The node represents a frame.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Value">
+            <summary>
+            The node represents a constraint or a field value (leaf node).
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Struct">
+            <summary>
+            The node represents a struct value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.CompoundValue">
+            <summary>
+            The node represents a compound value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Array">
+            <summary>
+            The node represents an array value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Translation">
+            <summary>
+            The node represents a type translation from a model type to an implementation type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Object">
+            <summary>
+            The node represents an object.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.ObjectReference">
+            <summary>
+            The node represents an object reference.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Constraints">
+            <summary>
+            The node represents a set of constraints.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Probes">
+            <summary>
+            The node represents a probe.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.Type">
+            <summary>
+            The node represents a type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.ObjectModel.NodeKind.NodeReference">
+            <summary>
+            The node represents a reference to another node.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResult">
+            <summary>
+            The object model representing an exploration result.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResult.#ctor(Microsoft.SpecExplorer.ObjectModel.TransitionSystem,Microsoft.SpecExplorer.ObjectModel.SharedEntitySet,System.Collections.Generic.IEnumerable{Microsoft.SpecExplorer.ObjectModel.StateEntity},Microsoft.SpecExplorer.ObjectModel.ExplorationResultExtensions)">
+            <summary>
+            Constructs a new instance of this type.
+            </summary>
+            <param name="system">The core transition system consisting of state labels and transitions.</param>
+            <param name="sharedEntities">Table of data entities shared among <paramref name="states"/>.</param>
+            <param name="states">States referenced from <paramref name="system"/>.</param>
+            <param name="extensions">extensions part.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when any of <paramref name="system"/> 
+            , <paramref name="sharedEntities"/> or <paramref name="states"/> is null.</exception>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ExplorationResult.TransitionSystem">
+            <summary>
+            The core transition system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ExplorationResult.SharedEntities">
+            <summary>
+            Table of data entities shared among <see cref="P:Microsoft.SpecExplorer.ObjectModel.ExplorationResult.StateEntities"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ExplorationResult.StateEntities">
+            <summary>
+            All state entities.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.ExplorationResult.Extensions">
+            <summary>
+            The exploration result extensions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.StateContents">
+            <summary>
+            The object model wrapping state entities and shared entities.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.StateContents.SharedEntities">
+            <summary>
+            The shared entity set.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.StateContents.StateEntities">
+            <summary>
+            All state entities.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoader">
+            <summary>
+            This class supports loading exploration result file into corresponding object models.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoader.#ctor(System.String)">
+            <summary>
+            Constructs a new instance of exploration result loader.
+            </summary>
+            <param name="path">The path from which the exploration result should be loaded.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> is null.
+            </exception>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoader.LoadExplorationResult">
+            <summary>
+            Loads exploration result object from exploration result file.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoader.LoadSharedEntities">
+            <summary>
+            Loads state shared entities from exploration result.
+            </summary>
+            <exception cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException">Thrown when error occurred during loading exploration result.</exception>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoader.LoadState(System.String)">
+            <summary>
+            Gets state entity from exploration result with given label.
+            </summary>
+            <param name="label">State label.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="label"/> is null.</exception>
+            <exception cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException">Thrown when error occurred during loading exploration result.</exception>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoader.LoadTransitionSystem">
+            <summary>
+            Loads the transition system from exploration result file.
+            </summary>
+            <returns></returns>
+            <exception cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException">Thrown when error occurred during loading exploration result.</exception>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoader.LoadExtensions">
+            <summary>
+            Loads the extensions part from exploration result file.
+            </summary>
+            <returns>A new instance of <see cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultExtensions"/> if any error occurred.</returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException">
+            <summary>
+            Exception thrown when error occurred loading exploration result
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException"/> class with a specified 
+            error message and a reference to the inner exception that is the cause of 
+            this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference 
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultLoadingException"/> class with serialized data.
+            </summary>
+            <param name="info">The serialized object data about the exception being thrown.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.ExplorationResultPacker">
+            <summary>
+            This class supports packing exploration result object models into file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultPacker.#ctor(Microsoft.SpecExplorer.ObjectModel.ExplorationResult)">
+            <summary>
+            Constructs an exploration result packer.
+            </summary>
+            <param name="result">The exploration result to be packed.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="result"/> is null.</exception>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.ExplorationResultPacker.Save(System.String)">
+            <summary>
+            Saves exploration result into file.
+            </summary>
+            <param name="path">The file path into which the exploration result should be written.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="path"/> is null.</exception>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.ObjectModel.StateEntity">
+            <summary>
+            The object model representing state content.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.StateEntity.#ctor(System.String,Microsoft.SpecExplorer.ObjectModel.StateFlags,System.String,Microsoft.SpecExplorer.ObjectModel.Node)">
+            <summary>
+            Constructs a new <see cref="T:Microsoft.SpecExplorer.ObjectModel.StateEntity"/>.
+            </summary>
+            <param name="label">Label of the state.</param>
+            <param name="flags">Flags of the state.</param>
+            <param name="description">Description of the state.</param>
+            <param name="content">Root node of the state content.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.ObjectModel.StateEntity.#ctor">
+            <summary>
+            For XML serialization only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.StateEntity.Label">
+            <summary>
+            Label which uniquely identifies a state in a <see cref="T:Microsoft.SpecExplorer.ObjectModel.TransitionSystem"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.StateEntity.Flags">
+            <summary>
+            The flags of this state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.StateEntity.Description">
+            <summary>
+            A description of this state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.ObjectModel.StateEntity.Content">
+            <summary>
+            The root node of content of this state.
+            </summary>
+        </member>
+    </members>
+</doc>

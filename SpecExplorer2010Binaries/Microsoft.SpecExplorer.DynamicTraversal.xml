@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SpecExplorer.DynamicTraversal</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalHelper">
+            <summary>
+            A helper class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalHelper.GetTransitionSystem(System.String[])">
+            <summary>
+            Deserialize transition system object model from the string value.
+            </summary>
+            <param name="splitSerializedTransitionSystem"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase">
+            <summary>
+            An abstract dynamic traversal base class which can be inherited by a customized dynamic traversal.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.IDynamicTraversal">
+            <summary>
+            The interface to describe a dynamic traversal test strategy.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.IDynamicTraversal.RunTestSuite(Microsoft.SpecExplorer.ObjectModel.TransitionSystem,System.Collections.Generic.IDictionary{Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.DynamicTraversal.CallTransitionDelegate},System.Collections.Generic.IDictionary{Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.DynamicTraversal.ReturnTransitionDelegate},System.Collections.Generic.IDictionary{Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.DynamicTraversal.EventTransitionDelegate},Microsoft.SpecExplorer.DynamicTraversal.TestHousekeepingHandler,Microsoft.SpecExplorer.DynamicTraversal.TestHousekeepingHandler,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            In general, the strategy interacts with serialized transition system to verify SUT on the fly.
+            </summary>
+            <param name="transitionSystem">transition system used by traversal algorithm</param>
+            <param name="callDelegates">a delegate dictionary which stores the delegates associate with each call transition</param>
+            <param name="returnDelegates">a delegate dictionary which stores the delegates associate with each return transition </param>
+            <param name="eventDelegates">a delegate dictionary which stores the delegates associate with each event transition</param>
+            <param name="testInitialize">test manager attached to test strategy</param>
+            <param name="testCleanup">test initialize delegate used before one new test case is started</param>
+            <param name="testProperties">test properties for dynamic traversal which should be configured at test runtime</param>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.DynamicTraversal.IDynamicTraversal.QuiescenceTimeout">
+            <summary>
+            Gets or sets quiescence timeout. Is initialized from switch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.DynamicTraversal.IDynamicTraversal.ProceedControlTimeout">
+            <summary>
+            Gets or sets proceed control timeout. Is initialized from switch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.DynamicTraversal.IDynamicTraversal.Manager">
+            <summary>
+            Gets or sets test manager. Is initialized by TestInitialize handler.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.callDelegates">
+            <summary>
+            A mapping relation between call transition and its callback delegates.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.returnDelegates">
+            <summary>
+            A mapping relation between return transition and its callback delegates.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.eventDelegates">
+            <summary>
+            A mapping relation between event transition and its callback delegates.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.testProperties">
+            <summary>
+            Test properties associates with the traversal.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.transitionSystem">
+            <summary>
+            Transition system which is traversed on.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.testInitialize">
+            <summary>
+            Test initialize callback delegate.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.testCleanup">
+            <summary>
+            Test cleanup callback delegate.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.startTime">
+            <summary>
+            The start time of dynamic traversal.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.RunTestSuite(Microsoft.SpecExplorer.ObjectModel.TransitionSystem,System.Collections.Generic.IDictionary{Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.DynamicTraversal.CallTransitionDelegate},System.Collections.Generic.IDictionary{Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.DynamicTraversal.ReturnTransitionDelegate},System.Collections.Generic.IDictionary{Microsoft.SpecExplorer.ObjectModel.Transition,Microsoft.SpecExplorer.DynamicTraversal.EventTransitionDelegate},Microsoft.SpecExplorer.DynamicTraversal.TestHousekeepingHandler,Microsoft.SpecExplorer.DynamicTraversal.TestHousekeepingHandler,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            In general, the strategy interacts with serialized transition system to verify SUT on the fly.
+            </summary>
+            <param name="transitionSystem">transition system used by traversal algorithm</param>
+            <param name="callDelegates">a delegate dictionary which stores the delegates associate with each call transition</param>
+            <param name="returnDelegates">a delegate dictionary which stores the delegates associate with each return transition </param>
+            <param name="eventDelegates">a delegate dictionary which stores the delegates associate with each event transition</param>
+            <param name="testInitialize">test manager attached to test strategy</param>
+            <param name="testCleanup">test initialize delegate used before one new test case is started</param>
+            <param name="testProperties">test properties for dynamic traversal which should be configured at test runtime</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.RunTest(Microsoft.SpecExplorer.ObjectModel.State,System.String)">
+            <summary>
+            Run test from a given initial state.
+            </summary>
+            <param name="initialState"></param>
+            <param name="testCaseName"></param>
+            <returns>test suite executing status: stopped, running</returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.ChooseInitialState">
+            <summary>
+            Choose an initial state from transition system
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.ChooseControllableTransition(Microsoft.SpecExplorer.ObjectModel.State,System.Collections.Generic.IList{Microsoft.SpecExplorer.ObjectModel.Transition})">
+            <summary>
+            Choose a controllable transition.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.ShouldStopTestCaseAt(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            Whether to stop test case at an accepting state.
+            </summary>
+            <param name="acceptingState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.ShouldStopTestSuite">
+            <summary>
+            Whether to stop the test suite.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.GetUniqueTestCaseName">
+            <summary>
+            Get an unique test case name.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.GenerateExpectedReturns(System.Collections.Generic.IList{Microsoft.SpecExplorer.ObjectModel.Transition})">
+            <summary>
+            Generate ExpectedReturn array for a list of return transitions.
+            </summary>
+            <param name="returnTransitions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.GenerateExpectedEvents(System.Collections.Generic.IList{Microsoft.SpecExplorer.ObjectModel.Transition})">
+            <summary>
+            Generate ExpectedEvent array for a list of event transitions.
+            </summary>
+            <param name="eventTransitions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.SplitEventControlTransitions(System.Collections.Generic.IList{Microsoft.SpecExplorer.ObjectModel.Transition},System.Collections.Generic.IList{Microsoft.SpecExplorer.ObjectModel.Transition}@,System.Collections.Generic.IList{Microsoft.SpecExplorer.ObjectModel.Transition}@)">
+            <summary>
+            Split transtions to event transitions and control transitions.
+            </summary>
+            <param name="transitions"></param>
+            <param name="eventTransitions"></param>
+            <param name="controllableTransitions"></param>
+            <returns></returns>
+        </member>
+        <member name="E:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.StateReached">
+            <summary>
+            State notification handler which can be used to collect state coverage information.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.TransitionTaken">
+            <summary>
+            Transition notification handler which can be used to collect transition coverage information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.Manager">
+            <summary>
+            The test manager used to monitor return/event queue, handle event/return selection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.QuiescenceTimeout">
+            <summary>
+            Gets or sets quiescence timeout. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.ProceedControlTimeout">
+            <summary>
+            Gets or sets proceed control timeout. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.StateNotificationHandler">
+            <summary>
+            Delegate used to handle state reached event.
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.DynamicTraversalBase.StepNotificationHandler">
+            <summary>
+            Delegate used to handle step taken event.
+            </summary>
+            <param name="step"></param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.TestSuiteStatus">
+            <summary>
+            The status of executing test suite
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.TestSuiteStatus.Running">
+            <summary>
+            Continue running test suite
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.TestSuiteStatus.Stopped">
+            <summary>
+            Stop running test suite
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.TestHousekeepingHandler">
+            <summary>
+            A delegate used for test initialize and test cleanup.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.CallTransitionDelegate">
+            <summary>
+            A delegate to represent a call invoke to SUT
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.ReturnTransitionDelegate">
+            <summary>
+            A delegate to represent a return check received from SUT.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.EventTransitionDelegate">
+            <summary>
+            A delegate to represent an event check received from SUT.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.CoverageDynamicTraversal">
+            <summary>
+            A coverage dynamic traversal.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.CoverageDynamicTraversal.stateCoverageCounterDict">
+            <summary>
+            Dictionary stores state coverage information.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.DynamicTraversal.CoverageDynamicTraversal.transitionCoverageCounterDict">
+            <summary>
+            Dictionary stores transition coverage information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.CoverageDynamicTraversal.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.CoverageDynamicTraversal.CoverState(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            The event handler when a state is covered.
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.CoverageDynamicTraversal.CoverTransition(Microsoft.SpecExplorer.ObjectModel.Transition)">
+            <summary>
+            The event handler when a transition is taken
+            </summary>
+            <param name="transition"></param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.DynamicTraversal.RandomCoverageDynamicTraversal">
+            <summary>
+            A random coverage dynamic traversal.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.RandomCoverageDynamicTraversal.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.RandomCoverageDynamicTraversal.ChooseInitialState">
+            <summary>
+            Choose an initial state from transition system
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.RandomCoverageDynamicTraversal.ChooseControllableTransition(Microsoft.SpecExplorer.ObjectModel.State,System.Collections.Generic.IList{Microsoft.SpecExplorer.ObjectModel.Transition})">
+            <summary>
+            Choose a controllable transition.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.RandomCoverageDynamicTraversal.ShouldStopTestCaseAt(Microsoft.SpecExplorer.ObjectModel.State)">
+            <summary>
+            Stop test case only at end state.
+            </summary>
+            <param name="acceptingState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.DynamicTraversal.RandomCoverageDynamicTraversal.ShouldStopTestSuite">
+            <summary>
+            Whether to stop the test suite.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
