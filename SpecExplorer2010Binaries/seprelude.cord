@@ -1,0 +1,16 @@
+
+//Operators defined as constructs
+construct test cases for _
+          "Microsoft.ActionMachines.Cord.EdgeCoverageMachineConstructProvider";
+construct accepting paths for _
+          "Microsoft.ActionMachines.Cord.DeadPathEliminationMachineConstructProvider";
+construct parameter expansion from _? for _
+		  "Microsoft.ActionMachines.Cord.ParameterExpansionMachinesConstructProvider";
+construct model program from _?
+		  "Microsoft.ActionMachines.Cord.RuleMachineConstructProvider";
+construct point shoot for _
+		  "Microsoft.ActionMachines.Cord.PointShootMachinesConstructProvider";
+construct bounded exploration for _
+		  "Microsoft.ActionMachines.Cord.BoundedExplorationMachinesConstructProvider";
+construct accept completion for _
+		  "Microsoft.ActionMachines.Cord.AcceptCompletionMachinesConstructProvider";

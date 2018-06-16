@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SpecExplorer.Runtime.VisualStudio</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase">
+            <summary>
+            An implementation of a Spec Explorer test class base which is 
+            integrating into the VSTT unit testing framework.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase.BeginTest(System.String)">
+            <summary>
+            See <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.BeginTest(System.String)"/>
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase.EndTest">
+            <summary>
+            See <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.EndTest"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase.Assert(System.Boolean,System.String)">
+            <summary>
+            See <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Assert(System.Boolean,System.String)"/>
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase.Assume(System.Boolean,System.String)">
+            <summary>
+            See <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Assume(System.Boolean,System.String)"/>
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase.Checkpoint(System.String)">
+            <summary>
+            See <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Checkpoint(System.String)"/>
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase.Comment(System.String)">
+            <summary>
+            See <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Checkpoint(System.String)"/>
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.VsTestClassBase.Dispose">
+            <summary>
+            Release resources.
+            </summary>
+        </member>
+    </members>
+</doc>
