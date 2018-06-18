@@ -54,6 +54,12 @@ namespace Reviver
     			"/machines:" + Machine;
     	
     		// Start Spec Explorer.
+    		// Maybe replace this code by adding SpecExplorer.exe to the references
+			// And call it directly using:
+    		// SpecExplorer.ParseCommand(...);
+    		// SpecExplorer.LibDirectoryList = ...
+    		// In both cases output during exploration is only received at exploration end,
+    		// while SpecExplorer.exe outputs progression during exploration.
 			Process p = new Process();
 			p.StartInfo.FileName = SpecExplorer ;
 			p.StartInfo.Arguments = Command;
