@@ -19,7 +19,7 @@ https://social.msdn.microsoft.com/Forums/en-US/home?forum=specexplorer
 Spec Explorer Blog:
 https://blogs.msdn.microsoft.com/specexplorer/
 
-![Screenshot](Images/Viewer.png)
+![Screenshot1](Images/Viewer.png)
 
 REQUIREMENTS
 ======
