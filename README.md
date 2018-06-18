@@ -18,8 +18,8 @@ Spec Explorer Forum:
 https://social.msdn.microsoft.com/Forums/en-US/home?forum=specexplorer
 Spec Explorer Blog:
 https://blogs.msdn.microsoft.com/specexplorer/
- 
-![Screenshot1](Images/Viewer.png)
+
+![Screenshot1](Images/Viewer.jpg)
 
 REQUIREMENTS
 ======
