@@ -19,6 +19,8 @@ https://social.msdn.microsoft.com/Forums/en-US/home?forum=specexplorer
 Spec Explorer Blog:
 https://blogs.msdn.microsoft.com/specexplorer/
 
+![Alt text](Images/Viewer.png?raw=true "Viewer")
+
 REQUIREMENTS
 ======
 This tool here is the absolute bare minimal demo possible reviving the original Spec Explorer Plug-In binaries.
