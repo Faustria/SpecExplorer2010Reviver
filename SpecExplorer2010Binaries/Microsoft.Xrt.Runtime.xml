@@ -1,0 +1,3132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Xrt.Runtime</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Xrt.Runtime.AssertFailedException">
+            <summary>
+            An exception which is thrown when an assertion fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssertFailedException.#ctor">
+            <summary>
+            Create assert failure exception.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssertFailedException.#ctor(System.String)">
+            <summary>
+            Create assert failure exception with message.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssertFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Create assert failure exception with specified 
+            error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssertFailedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Create assert failure exception with serialized data.
+            </summary>
+            <param name="serializationInfo"></param>
+            <param name="streamingContext"></param>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.AssumeFailedException">
+            <summary>
+            An exception which is thrown when an assumption fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssumeFailedException.#ctor">
+            <summary>
+            Create an assumption failure exception.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssumeFailedException.#ctor(System.String)">
+            <summary>
+            Create an assumption failure exception.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssumeFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Create an assumption failure exception with with a specified 
+            error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.AssumeFailedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Create an assumption failure exception with serialized data.
+            </summary>
+            <param name="serializationInfo"></param>
+            <param name="streamingContext"></param>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.ArrayHelper">
+            <summary>
+            This class is used by metadata (program) implementation to simulate some implicit functionality.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.TypeSubstitutionAttribute">
+            <summary>
+            This assembly-level attribute defines a type substitution.
+            </summary>
+            <remarks>
+            The original type is replaced by the substitution type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.TypeSubstitutionAttribute.#ctor(System.Type,System.Type)">
+            <summary>
+            Declares that the one type is substituted by the other.
+            </summary>
+            <param name="originalType"></param>
+            <param name="substitutionType"></param>        
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.TypeSubstitutionAttribute.OriginalType">
+            <summary>
+            original type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.TypeSubstitutionAttribute.SubstitutionType">
+            <summary>
+            substituted type
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.MethodSubstitutionAttribute">
+            <summary>
+            This assembly-level attribute defines a method substitution.
+            </summary>
+            <remarks>
+            The original method is replaced by the substitution method.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.MethodSubstitutionAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Declares that the one type is substituted by the other.
+            </summary>
+            <param name="originalMethodName"></param>
+            <param name="substitutedMethodName"></param>
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.MethodSubstitutionAttribute.OriginalMethodName">
+            <summary>
+            original method name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.MethodSubstitutionAttribute.SubstitutedMethodName">
+            <summary>
+            substituted method name
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.NativeTypeAttribute">
+            <summary>
+            This assembly-level attribute indicates that a type should
+            be treated as native.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.NativeTypeAttribute.#ctor(System.Type)">
+            <summary>
+            Declares that the given type should be treated as native.
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.NativeTypeAttribute.#ctor(System.String)">
+            <summary>
+            Declares that the given type should be treated as native.
+            </summary>
+            <param name="typeName"></param>
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.NativeTypeAttribute.Type">
+            <summary>
+            native type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.NativeTypeAttribute.TypeName">
+            <summary>
+            native type name
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.ReflectionCallAttribute">
+            <summary>
+            This method-level attribute indicates that this method should be executed by a call through reflection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.Box`1">
+            <summary>
+            This class supports the exploration infrastructure and is not intended to be used directly from your code.    
+            </summary>   
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.Box`1.#ctor(`0)">
+            <summary>
+            This method supports the exploration infrastructure and is not intended to be used directly from your code.    
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.Box`1.ToString">
+            <summary>
+            This method supports the exploration infrastructure and is not intended to be used directly from your code.    
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.Box`1.GetHashCode">
+            <summary>
+            This method supports the exploration infrastructure and is not intended to be used directly from your code.    
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.Box`1.Equals(System.Object)">
+            <summary>
+            This method supports the exploration infrastructure and is not intended to be used directly from your code.    
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.Box`1.Value">
+            <summary>
+            This property supports the exploration infrastructure and is not intended to be used directly from your code.    
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.BoxHelper">
+            <summary>
+            This class is used by metadata (program) implementation to simulate some implicit functionality.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.BoxHelper.BoxValue``1(``0)">
+            <summary>
+            Box a given value
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.BoxHelper.BoxNullable``1(System.Nullable{``0})">
+            <summary>
+            Box a nullable value
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.BoxHelper.Unbox``1(System.Object)">
+            <summary>
+            Unbox a value
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="box"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.BoxHelper.UnboxNullable``1(System.Object)">
+            <summary>
+            Unbox a nullable value
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="box"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Modeling.Choice">
+            <summary>
+            A class which allows to generate non-deterministic choice. Also allows to introduce symbolic values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Choice.Some``1">
+            <summary>
+            Deliver a value in the range of the given type. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Choice.Some``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Deliver a value from the given enumeration.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Choice.Some``1(``0[])">
+            <summary>
+            Deliver a value from the given parameters.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Choice.Some``1(System.Predicate{``0})">
+            <summary>
+            Deliver a value which satisfies the given predicate.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Modeling.Map`2">
+            <summary>
+            The type of map values, an unordered collection mapping keys to elements. Map values are immutable.
+            See <see cref="T:Microsoft.Modeling.MapContainer`2"/> for a mutable version of maps.
+            </summary>
+            <remarks>
+            Maps ignore user provided equality and hashcode of element types; this is to make them suitable for reasoning in modeling. 
+            Instead, map values use a fixed equality for their elements which is defined as follows: all primitive types and value
+            types (struct) are equal by structure, reference types which derive from <see cref="T:Microsoft.Modeling.CompoundValue"/> are equal
+            by structure as well, and all other reference types are equal by object identity only.
+            
+            Map values support most LINQ constructs directly which allows to make efficient use of those for processing them.
+            
+            Maps can be constructed in Cord expressions using the maplet syntax (key -&gt; value).
+            
+            Maps types are immutable where apparent changes to a map will create a new instance. 
+            The <see cref="T:Microsoft.Modeling.Map`2"/> type obeys value equality in state comparison: 
+            two collection values are identical in two states if their content is identical.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Modeling.CompoundValue">
+            <summary>
+            A base class for value classes. Value classes 
+            and its extenders have a sealed structural equality and hashcode which is inherited 
+            by extenders.
+            <para>Value classes may only have readonly fields. This condition is detected at runtime.</para>
+            <para>When running under XRT, object identities of value classes are ignored, and one instance 
+            of a value class might be substituted by another provided it is structural equal.
+            </para>
+            </summary>
+            <remarks>
+            Subclasses of this class have several advantages over regular structures because they are 
+            treated specially by the exploration engine. They all inherit a structural equality: 
+            two values are equal if all their fields are equal.
+            </remarks>
+            <example>
+            In the following code example, two persons are considered equal if their names and ages are the same.
+            <code>
+            class Person : CompoundValue
+            {
+                internal string name;
+                internal int age;
+                internal Person(string name, int age)
+                {
+                    this.name = name;
+                    this.age = age;
+                }
+            }
+            </code>
+            The type can also be used in domain expressions as follows:
+            <code>
+            config PersonDomain 
+            {
+                domain Person = { Person ( name = "Jane", age = 12 ), Person ( name = "John", age = 10 ) };
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Modeling.CompoundValue.Equals(System.Object)">
+            <summary>
+            Fixes the equality of all extenders of a compound value. Two instances are
+            equal if they have the same type, and the assignments to all fields are equal.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.CompoundValue.op_Equality(Microsoft.Modeling.CompoundValue,Microsoft.Modeling.CompoundValue)">
+            <summary>
+            Operator equality to Equals.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.CompoundValue.op_Inequality(Microsoft.Modeling.CompoundValue,Microsoft.Modeling.CompoundValue)">
+            <summary>
+            Operator inequality mapping to Equals.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.CompoundValue.GetHashCode">
+            <summary>
+            Fixes the hashcode of all extenders of a value class such that it is consistent
+            with the fixed equality.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.CompoundValue.ToString">
+            <summary>
+            Provides a default implementation for conversion to strings, displaying the structure
+            of the instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Microsoft.Modeling.Map`2.Rep">
+            <summary>
+            Supports the infrastructure. Do not use.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.#ctor">
+            <summary>
+            Constructs an empty map value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}})">
+            <summary>
+            Construct a map value from an enumeration of key-value pairs.
+            </summary>
+            <param name="pairs"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.ToString">
+            <summary>
+            Convert map value to a readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.ToArray">
+            <summary>
+            Deliver a new array containing elements of map.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Add(`0,`1)">
+            <summary>
+            Add a key/value pair to the map, delivering a new map. An exception is thrown
+            if the key has already a definition in the map.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Add a key/value pair to the map, delivering a new map. An exception is thrown
+            if the key has already a definition in the map.
+            </summary>
+            <param name="pair"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Override(`0,`1)">
+            <summary>
+            Add a key/value pair to the map, delivering a new map. An old mapping of key will be replaced.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Override(Microsoft.Modeling.Map{`0,`1})">
+            <summary>
+            Override this mapping with all the key/value pairs from the other mapping.
+            </summary>
+            <param name="map"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Remove(`0)">
+            <summary>
+            Remove the mapping of key from the map.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.ContainsKey(`0)">
+            <summary>
+            Check whether a key is defined in the map.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.TryGetValue(`0,`1@)">
+            <summary>
+            Try get the keys value from the map.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{D@R}}#Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.System#Collections#Generic#IDictionary{D@R}#Add(`0,`1)">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.System#Collections#Generic#IDictionary{D@R}#Remove(`0)">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Clear">
+            <summary>
+            Not supported.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Test for membership of key with particular value.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <summary>
+            Copy contents of map into array.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.GetEnumerator">
+            <summary>
+            Get enumeration of key-value pairs in the map.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get enumeration of key-value pairs in the map.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Where(System.Func{System.Collections.Generic.KeyValuePair{`0,`1},System.Boolean})">
+            <summary>
+            Filter a map based on predicate
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Select``1(System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``0})">
+            <summary>
+            Perform a projection over a map
+            </summary>
+            <typeparam name="U"></typeparam>
+            <param name="selector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.SelectMany``2(System.Func{System.Collections.Generic.KeyValuePair{`0,`1},System.Collections.Generic.IEnumerable{``0}},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``0,``1})">
+            <summary>
+            Perform a one to many element projection over a map
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="selector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.OrderBy``1(System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``0})">
+            <summary>
+            Orders a map according to key in ascending order.
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.OrderByDescending``1(System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``0})">
+            <summary>
+            Orders a map according to key in descending order.
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.Join``3(System.Collections.Generic.IEnumerable{``0},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``1},System.Func{``0,``1},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``0,``2})">
+            <summary>
+            Perform an inner join of two maps based on matching key
+            extracted from the elements
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="inner"></param>
+            <param name="outerKeySelector"></param>
+            <param name="innerKeySelector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``1},System.Func{``0,``1},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},System.Collections.Generic.IEnumerable{``0},``2})">
+            <summary>
+            Perform a grouped join of two maps based on matching keys 
+            extracted from the elements
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="inner"></param>
+            <param name="outerKeySelector"></param>
+            <param name="innerKeySelector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.GroupBy``1(System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``0})">
+            <summary>
+            Groups elements of a map
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Map`2.GroupBy``2(System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``0},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},``1})">
+            <summary>
+            Groups elements of a map
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="E"></typeparam>
+            <param name="keySelector"></param>
+            <param name="elementSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.Map`2.Keys">
+            <summary>
+            Get the enumeration of keys in the map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.Map`2.Values">
+            <summary>
+            Get the enumeration of values in the map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.Map`2.Item(`0)">
+            <summary>
+            Get key mapping; seter not supported.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.Map`2.Count">
+            <summary>
+            Return the number of elements in the map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.Map`2.IsReadOnly">
+            <summary>
+            Always returns true.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.MapContainer`2">
+            <summary>
+            The type of map containers, an object which wraps a map value. 
+            See <see cref="T:Microsoft.Modeling.Map`2"/> for map values.
+            </summary>
+            <typeparam name="D">Key type param</typeparam>
+            <typeparam name="R">Element type param</typeparam>
+            <remarks>
+            Map containers provide most operations of map values and are a wrapper for those. They do not directly provide LINQ expressions 
+            as transforming a container would result in a new object reference which leads to a different state. For transforming the
+            content of a container using a LINQ query, use <see cref="M:Microsoft.Modeling.MapContainer`2.Transform(System.Func{Microsoft.Modeling.Map{`0,`1},Microsoft.Modeling.Map{`0,`1}})"/>, which works on the value it contains.
+            
+            This type is implemented as a wrapper around an instance of the <see cref="T:Microsoft.Modeling.Map`2"/> that actually creates 
+            a new instance of <see cref="T:Microsoft.Modeling.Map`2"/> and updates a reference as if the original <see cref="T:Microsoft.Modeling.Map`2"/> instance had been changed. 
+            
+            It replicates the interfaces of <see cref="T:Microsoft.Modeling.Map`2"/>, but slightly changes the signature. 
+            Most methods returning a collection in <see cref="T:Microsoft.Modeling.Map`2"/> are of type void because they modify the receiver instead of returning a new instance.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.#ctor">
+            <summary>
+            Constructs an empty map.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}})">
+            <summary>
+            Construct a map from an enumeration of key-value pairs.
+            </summary>
+            <param name="pairs"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.#ctor(Microsoft.Modeling.Map{`0,`1})">
+            <summary>
+            Construct a map container from a map value.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Transform(System.Func{Microsoft.Modeling.Map{`0,`1},Microsoft.Modeling.Map{`0,`1}})">
+            <summary>
+            Perform a transformation of the content of the container.
+            This is used for example together with LINQ query expressions, as 
+            in <c>sc.Transform(m => from x in m where x.Key > 0 select x)</c>.
+            </summary>
+            <param name="func"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.ToString">
+            <summary>
+            Convert map to a readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.ToArray">
+            <summary>
+            Deliver a new array containing elements of map.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.ToMap">
+            <summary>
+            Deliver a map value with the content of this map container.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Add(`0,`1)">
+            <summary>
+            Add a key/value pair to the map, delivering a new map. An exception is thrown
+            if the key has already a definition in the map.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Add a key/value pair to the map, delivering a new map. An exception is thrown
+            if the key has already a definition in the map.
+            </summary>
+            <param name="pair"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Override(`0,`1)">
+            <summary>
+            Add a key/value pair to the map, delivering a new map. An old mapping of key will be replaced.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Override(Microsoft.Modeling.MapContainer{`0,`1})">
+            <summary>
+            Override this mapping with all the key/value pairs from the other map container.
+            </summary>
+            <param name="map"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Override(Microsoft.Modeling.Map{`0,`1})">
+            <summary>
+            Override this mapping with all the key/value pairs from the other map value.
+            </summary>
+            <param name="map"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Remove(`0)">
+            <summary>
+            Remove the mapping of key from the map.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Remove the mapping of key with particular value from the map.
+            </summary>
+            <param name="pair"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.ContainsKey(`0)">
+            <summary>
+            Check whether a key is defined in the map.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.TryGetValue(`0,`1@)">
+            <summary>
+            Try get the keys value from the map.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Clear">
+            <summary>
+            Not supported.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Test for membership of key with particular value.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <summary>
+            Copy contents of map into array.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.GetEnumerator">
+            <summary>
+            Get enumeration of key-value pairs in the map.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.MapContainer`2.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get enumeration of key-value pairs in the map.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.MapContainer`2.Keys">
+            <summary>
+            Get the enumeration of keys in the map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.MapContainer`2.Values">
+            <summary>
+            Get the enumeration of values in the map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.MapContainer`2.Item(`0)">
+            <summary>
+            Get or set (override) key mapping.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.MapContainer`2.Count">
+            <summary>
+            Return the number of elements in the map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.MapContainer`2.IsReadOnly">
+            <summary>
+            Always returns false.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.Sequence`1">
+            <summary>
+            The type of sequence values, an ordered collection of elements similar to a list but immutable.
+            See <see cref="T:Microsoft.Modeling.SequenceContainer`1"/> for a mutable version of sequences.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <remarks>
+            Sequence values use an internal representation which is suited for state identification in exploration. 
+            <para/>
+            Sequence values support most LINQ constructs directly which allows to make efficient use of those for processing them.
+            <para/>
+            Sequences can be constructed in Cord expressions using the structured value collection syntax, 
+            a list of elements between curly brackets ({}). 
+            
+            Sequence types are immutable, and apparent changes 
+            to a sequence create a new instance. The Sequence type obeys value equality in state comparison: 
+            two collection values are identical in two states if their content is identical. 
+            A value may reoccur in a Sequence, but always in a different position.
+            </remarks>
+            <example>
+            <code>
+            [Rule]
+            static void MyMethod()
+            {
+                Sequence&lt;int&gt; seq = new Sequence(1);
+                //The sequence has one element.
+                seq.Add(2);
+                //The sequence still has one element because the result was not stored.
+                seq = seq.Add(2);
+                //Now seq has two elements.
+            }
+            </code>
+            </example>
+        </member>
+        <member name="F:Microsoft.Modeling.Sequence`1.Rep">
+            <summary>
+            Supports the infrastructure. Do not use.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.#ctor">
+            <summary>
+            Constructs an empty sequence value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructs a sequence value from the given enumeration of elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.#ctor(`0[])">
+            <summary>
+            Construct a sequence value from one or more given elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.ToString">
+            <summary>
+            Convert sequence value to a readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.ToArray">
+            <summary>
+            Delivers the content of the sequence value as an array.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Add(`0)">
+            <summary>
+            Add an element to the sequence, delivering a new sequence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Add a range of elements.
+            </summary>
+            <param name="elems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Insert(System.Int32,`0)">
+            <summary>
+            Insert element at given index. If index is out of bound,
+            an exception will be thrown.
+            </summary>
+            <param name="index"></param>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Insert enumeration of elements at given index. If index is out of bound,
+            an exception will be thrown.
+            </summary>
+            <param name="index"></param>
+            <param name="elems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Update(System.Int32,`0)">
+            <summary>
+            Replace the value at index by element. If index is out of bound, an exception
+            will be thrown.
+            </summary>
+            <param name="index"></param>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Remove(`0)">
+            <summary>
+            Remove an element from the sequence, delivering a new sequence. If the element
+            is not in the sequence, the current sequence will be returned.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.RemoveAt(System.Int32)">
+            <summary>
+            Remove an element at given index, delivering a new sequence. If the index
+            is out of range an exception will be thrown.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Contains(`0)">
+            <summary>
+            Check whether an element is contained in the sequence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.IndexOf(`0)">
+            <summary>
+            Deliver the index of the first occurrence of element in list, or -1, if no occurrence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.IndexOf(`0,System.Int32)">
+            <summary>
+            Deliver the index of the first occurrence of element in sublist starting at position and ranging until end, or -1, if no occurrence.
+            If start is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.IndexOf(`0,System.Int32,System.Int32)">
+            <summary>
+            Deliver the index of the first occurrence of element in sublist starting at position and ranging count elements, or -1, if no occurrence.
+            If start or count is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.LastIndexOf(`0)">
+            <summary>
+            Deliver the index of the last occurrence of element in list, or -1, if no occurrence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.LastIndexOf(`0,System.Int32)">
+            <summary>
+            Deliver the index of the last occurrence of element in sublist starting at position and ranging until end, or -1, if no occurrence.
+            If start is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.LastIndexOf(`0,System.Int32,System.Int32)">
+            <summary>
+            Deliver the index of the last occurrence of element in sublist starting at position and ranging count elemnts, or -1, if no occurrence.
+            If start or count is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Append(Microsoft.Modeling.Sequence{`0})">
+            <summary>
+            Deliver the concatenation of this and the other sequence.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.op_Addition(Microsoft.Modeling.Sequence{`0},Microsoft.Modeling.Sequence{`0})">
+            <summary>
+            Deliver the concatenation of this and the other sequence.
+            </summary>
+            <param name="seq1"></param>
+            <param name="seq2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.SubSeq(System.Int32)">
+            <summary>
+            Deliver the subsequence starting at position and ranging until end. 
+            If position is out of range, an exception will be thrown.
+            </summary>
+            <param name="start"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.SubSeq(System.Int32,System.Int32)">
+            <summary>
+            Deliver the subsequence starting at position and ranging count elements. 
+            If positions are out of range, an exception will be thrown.
+            </summary>
+            <param name="start"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Revert">
+            <summary>
+            Deliver the sequence value with reversed order of elements.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Where(System.Predicate{`0})">
+            <summary>
+            Filter a sequence based on predicate.
+            </summary>
+            <param name="predicate">predicate generated by Compiler </param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Select``1(System.Func{`0,``0})">
+            <summary>
+            Perform a projection over a sequence.
+            </summary>
+            <typeparam name="U"></typeparam>
+            <param name="selector">projection selector</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.SelectMany``2(System.Func{`0,System.Collections.Generic.IEnumerable{``0}},System.Func{`0,``0,``1})">
+            <summary>
+            Perform a one to many element projection over a sequence.
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="selector">projection selector over T</param>
+            <param name="resultSelector">pojection result selector over T, U</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.OrderBy``1(System.Func{`0,``0})">
+            <summary>
+            Orders a sequence according to given key in ascending order
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+            <remarks>Note that sub-ordering is not ordered. Sub-ordered collections are not fully transparent for state
+            identification as they need to remember the outer ordering. 
+            Use <see cref="M:System.Linq.Enumerable.OrderBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})"/> to do nested
+            ordering when you need it, and convert the result back to a the collection type when ordering is done.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.OrderByDescending``1(System.Func{`0,``0})">
+            <summary>
+            Orders a sequence according to given key in descending order
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+            <remarks>Note that sub-ordering is not ordered. Sub-ordered collections are not fully transparent for state
+            identification as they need to remember the outer ordering. 
+            Use <see cref="M:System.Linq.Enumerable.OrderBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})"/> to do nested
+            ordering when you need it, and convert the result back to a the collection type when ordering is done.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Join``3(System.Collections.Generic.IEnumerable{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})">
+            <summary>
+            Perform an inner join of two sequences based on matching key
+            extracted from the elements
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="inner"></param>
+            <param name="outerKeySelector"></param>
+            <param name="innerKeySelector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,System.Collections.Generic.IEnumerable{``0},``2})">
+            <summary>
+            Perform a grouped join of two sequences based on matching keys 
+            extracted from the elements
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="inner"></param>
+            <param name="outerKeySelector"></param>
+            <param name="innerKeySelector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.GroupBy``1(System.Func{`0,``0})">
+            <summary>
+            Groups elements of a sequence
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.GroupBy``2(System.Func{`0,``0},System.Func{`0,``1})">
+            <summary>
+            Groups elements of a sequence
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="E"></typeparam>
+            <param name="keySelector"></param>
+            <param name="elementSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.GetEnumerator">
+            <summary>
+            Get the enumeration of elements in the sequence.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get the enumeration of elements in the sequence.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+            <summary>
+            Not supported since sequence values are read-only.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.Clear">
+            <summary>
+            Not supported since sequence values are read-only.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the sequence into the array.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Sequence`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
+            <summary>
+            Not supported since sequence values are read-only.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.Sequence`1.Item(System.Int32)">
+            <summary>
+            Return the element at the given index. If index is out of bound, an exception
+            is thrown.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.Sequence`1.Count">
+            <summary>
+            Delivers the count of elements in the sequence.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.Sequence`1.IsReadOnly">
+            <summary>
+            Always returns true.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.SequenceGroup`2">
+            <summary>
+            A Sequence Group for given key.
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceGroup`2.#ctor(`0,Microsoft.Modeling.Sequence{`1})">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="seq"></param>
+        </member>
+        <member name="P:Microsoft.Modeling.SequenceGroup`2.Key">
+            <summary>
+            Delivers key of this <see cref="T:Microsoft.Modeling.SequenceGroup`2"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.SequenceContainer`1">
+            <summary>
+            The type of sequence containers, an object which wraps a sequence value. 
+            See <see cref="T:Microsoft.Modeling.Sequence`1"/> for sequence values.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <remarks>
+            This type is implemented as a wrapper around an instance of the <see cref="T:Microsoft.Modeling.Sequence`1"/> type that 
+            actually creates a new instance of <see cref="T:Microsoft.Modeling.Sequence`1"/> and updates a reference as if the original 
+            <see cref="T:Microsoft.Modeling.Sequence`1"/> instance had been changed. 
+            It replicates the methods of <see cref="T:Microsoft.Modeling.Sequence`1"/>, but slightly changes the signature. 
+            Most methods returning a collection in <see cref="T:Microsoft.Modeling.Sequence`1"/> are of type void because 
+            they modify the receiver instead of returning a new instance.
+            <para/>
+            Sequence containers provide most operations of sequence values and are a wrapper for those. They do not directly provide LINQ expressions 
+            as transforming a container would result in a new object reference which leads to a different state. For transforming the
+            content of a container using a LINQ query, use <see cref="M:Microsoft.Modeling.SequenceContainer`1.Transform(System.Func{Microsoft.Modeling.Sequence{`0},Microsoft.Modeling.Sequence{`0}})"/>, which works on the value it contains.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.#ctor">
+            <summary>
+            Constructs an empty sequence.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.#ctor(Microsoft.Modeling.Sequence{`0})">
+            <summary>
+            Construct a sequence container from a sequence value.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructs a sequence from the given enumeration of elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.#ctor(`0[])">
+            <summary>
+            Construct a sequence from one or more given elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Transform(System.Func{Microsoft.Modeling.Sequence{`0},Microsoft.Modeling.Sequence{`0}})">
+            <summary>
+            Perform a transformation of the content of the container.
+            This is used for example together with LINQ query expressions, as 
+            in <c>sc.Transform(s => from x in s where x > 0 select x)</c>.
+            </summary>
+            <param name="func"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.ToString">
+            <summary>
+            Convert sequence to a readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.ToSequence">
+            <summary>
+            Delivers the content of the container as a sequence value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.ToArray">
+            <summary>
+            Delivers the content of the sequence as an array.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Add(`0)">
+            <summary>
+            Add an element to the sequence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Add a range of elements to the sequence.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Remove(`0)">
+            <summary>
+            Remove an element from the sequence. If the element
+            is not in the sequence, false will be returned, and the sequence will not be changed,
+            otherwise true.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.RemoveAt(System.Int32)">
+            <summary>
+            Remove an element at given index. If the index
+            is out of range an exception will be thrown.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Insert(System.Int32,`0)">
+            <summary>
+            Insert element at given index. If index is out of range,
+            an exception will be throw.
+            </summary>
+            <param name="at"></param>
+            <param name="elem"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Insert range of elements at given index. If index is out of range,
+            an exception will be thrown.
+            </summary>
+            <param name="at"></param>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Append(Microsoft.Modeling.SequenceContainer{`0})">
+            <summary>
+            Append the other sequence at the end of this sequence.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Update(System.Int32,`0)">
+            <summary>
+            Update the element at index. If index is out of bound, an exception
+            will be thrown.
+            </summary>
+            <param name="index"></param>
+            <param name="elem"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Contains(`0)">
+            <summary>
+            Check whether an element is contained in the sequence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.IndexOf(`0)">
+            <summary>
+            Deliver the index of the first occurrence of element in list, or -1, if no occurrence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.IndexOf(`0,System.Int32)">
+            <summary>
+            Deliver the index of the first occurrence of element in sublist starting at position and ranging until end, or -1, if no occurrence.
+            If start is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.IndexOf(`0,System.Int32,System.Int32)">
+            <summary>
+            Deliver the index of the first occurrence of element in sublist starting at position and ranging count elements, or -1, if no occurrence.
+            If start or count is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.LastIndexOf(`0)">
+            <summary>
+            Deliver the index of the last occurrence of element in list, or -1, if no occurrence.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.LastIndexOf(`0,System.Int32)">
+            <summary>
+            Deliver the index of the last occurrence of element in sublist starting at position and ranging until end, or -1, if no occurrence.
+            If start is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.LastIndexOf(`0,System.Int32,System.Int32)">
+            <summary>
+            Deliver the index of the last occurrence of element in sublist starting at position and ranging count elements, or -1, if no occurrence.
+            If start or count is out of bound, an exception will be thrown.
+            </summary>
+            <param name="elem"></param>
+            <param name="start"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.GetEnumerator">
+            <summary>
+            Get the enumeration of elements in the sequence.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get the enumeration of elements in the sequence.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.Clear">
+            <summary>
+            Clears the content of this sequence.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.SequenceContainer`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the sequence into the array.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="P:Microsoft.Modeling.SequenceContainer`1.Item(System.Int32)">
+            <summary>
+            Return or set the element at the given index. If index is out of bound, an exception
+            is thrown.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.SequenceContainer`1.Count">
+            <summary>
+            Delivers the count of elements in the sequence.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.SequenceContainer`1.IsReadOnly">
+            <summary>
+            Always returns false.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.Set`1">
+            <summary>
+            The type of set values, an unordered collection of elements without repetitions. Set values are immutable.
+            See <see cref="T:Microsoft.Modeling.SetContainer`1"/> for a mutable version of sets.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <remarks>    
+            Set values ignore user provided equality and hashcode of element types; this is to make them suitable for reasoning in modeling. 
+            Instead, set values use a fixed equality for their elements which is defined as follows: all primitive types and value
+            types (struct) are equal by structure, reference types which derive from <see cref="T:Microsoft.Modeling.CompoundValue"/> are equal
+            by structure as well, and all other reference types are equal by object identity only.
+            
+            Sets are immutable values, so the set instance on which the action is invoked is not modified. Only the set returned shows the changes.
+            Two sets are equal if they contain the same elements. The order and repetitions of elements in the parameters to the constructor are disregarded, 
+            and order-dependent methods such as ToArray, GetEnumerator, and CopyTo deliver an arbitrary result, 
+            although always the same for identical sets. The rest of the common methods behave as for sequences. 
+            The difference is that a set can contain only a single occurrence of an element and that there is no order involved.
+            
+            Set values support most LINQ constructs directly which allows to make efficient use of those for processing them.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Modeling.Set`1.Rep">
+            <summary>
+            Supports the infrastructure. Do not use.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.#ctor">
+            <summary>
+            Constructs an empty set value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructs a set value from the given enumeration of elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.#ctor(`0[])">
+            <summary>
+            Construct a set value from one or more given elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.ToString">
+            <summary>
+            Convert set value to a readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.ToArray">
+            <summary>
+            Deliver a new array containing elements of set value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Add(`0)">
+            <summary>
+            Add an element into the set, delivering a new set.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Remove(`0)">
+            <summary>
+            Remove an element from the set, delivering a new set.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Contains(`0)">
+            <summary>
+            Check whether an element is contained in the set.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Union(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Construct the union of this set with another enumerable.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.op_Addition(Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0})">
+            <summary>
+            Construct the union of two sets.
+            </summary>
+            <param name="this"></param>
+            <param name="that"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Intersection(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Construct the intersection this set with enumerable.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.op_Multiply(Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0})">
+            <summary>
+            Construct the intersection of two sets.
+            </summary>
+            <param name="this"></param>
+            <param name="that"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.SubsetOf(Microsoft.Modeling.Set{`0})">
+            <summary>
+            Check whether this set is a subset of the other set.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.op_LessThanOrEqual(Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0})">
+            <summary>
+            Check whether one set is a subset of other set.
+            </summary>
+            <param name="s1"></param>
+            <param name="s2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.op_LessThan(Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0})">
+            <summary>
+            Check whether one set is a proper subset of other set.
+            </summary>
+            <param name="s1"></param>
+            <param name="s2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.op_GreaterThanOrEqual(Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0})">
+            <summary>
+            Check whether one set is a superset of other set.
+            </summary>
+            <param name="s1"></param>
+            <param name="s2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.op_GreaterThan(Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0})">
+            <summary>
+            Check whether one set is a proper superset of other set.
+            </summary>
+            <param name="s1"></param>
+            <param name="s2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Where(System.Func{`0,System.Boolean})">
+            <summary>
+            Filter a set based on predicate
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Select``1(System.Func{`0,``0})">
+            <summary>
+            Perform a projection over a set
+            </summary>
+            <typeparam name="U"></typeparam>
+            <param name="selector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.SelectMany``2(System.Func{`0,System.Collections.Generic.IEnumerable{``0}},System.Func{`0,``0,``1})">
+            <summary>
+            Perform a one to many element projection over a set
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="selector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.OrderBy``1(System.Func{`0,``0})">
+            <summary>
+            Orders a set according to key in ascending order, delivering a sequence.
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.OrderByDescending``1(System.Func{`0,``0})">
+            <summary>
+            Orders a set according to key in descending order.
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Join``3(System.Collections.Generic.IEnumerable{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})">
+            <summary>
+            Perform an inner join of two sets based on mathcing key
+            extracted from the elements
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="inner"></param>
+            <param name="outerKeySelector"></param>
+            <param name="innerKeySelector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,System.Collections.Generic.IEnumerable{``0},``2})">
+            <summary>
+            Perform a grouped join of two sets based on matching keys 
+            extracted from the elements
+            </summary>
+            <typeparam name="U"></typeparam>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="inner"></param>
+            <param name="outerKeySelector"></param>
+            <param name="innerKeySelector"></param>
+            <param name="resultSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.GroupBy``2(System.Func{`0,``0},System.Func{`0,``1})">
+            <summary>
+            Groups elements of a set
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="E"></typeparam>
+            <param name="keySelector"></param>
+            <param name="elementSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.GroupBy``1(System.Func{`0,``0})">
+            <summary>
+            Groups elements of a set
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.GetEnumerator">
+            <summary>
+            Get the enumeration of elements in the set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get the enumeration of elements in the set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+            <summary>
+            Not supported since set values are read-only.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.Clear">
+            <summary>
+            Not supported since set values are read-only.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the set into the array.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Set`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
+            <summary>
+            Not supported since set values are read-only.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Modeling.Set`1.Count">
+            <summary>
+            Delivers the count of elements in the set.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.Set`1.IsReadOnly">
+            <summary>
+            Always return true.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.SetGroup`2">
+            <summary>
+            A Set Group of Key K.
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Microsoft.Modeling.SetGroup`2.#ctor(`0,Microsoft.Modeling.Set{`1})">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="set"></param>
+        </member>
+        <member name="P:Microsoft.Modeling.SetGroup`2.Key">
+            <summary>
+            Delivers key of this <see cref="T:Microsoft.Modeling.SetGroup`2"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.SetContainer`1">
+            <summary>
+            The type of set containers, an object which wraps a set value. See <see cref="T:Microsoft.Modeling.Set`1"/> for set values.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <remarks>
+            This type is implemented as a wrapper around an instance of the <see cref="T:Microsoft.Modeling.Set`1"/> type. 
+            It replicates the interfaces of <see cref="T:Microsoft.Modeling.Set`1"/>, but slightly changes the signature. 
+            Most methods returning a collection in <see cref="T:Microsoft.Modeling.Set`1"/> are of type void, as they modify its receiver instead of returning a new instance.
+            <para/>
+            Set containers provide most operations of sets and are a wrapper for those. They do not directly provide LINQ expressions 
+            as transforming a container would result in a new object reference which leads to a different state. For transforming the
+            content of a set container using a LINQ query, use <see cref="M:Microsoft.Modeling.SetContainer`1.Transform(System.Func{Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0}})"/>, which works on the set it contains.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.#ctor">
+            <summary>
+            Constructs an empty set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructs a set from the given enumeration of elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.#ctor(`0[])">
+            <summary>
+            Construct a set from one or more given elements.
+            </summary>
+            <param name="elems"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.#ctor(Microsoft.Modeling.Set{`0})">
+            <summary>
+            Construct a set from a set value.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.ToString">
+            <summary>
+            Convert set to a readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.ToArray">
+            <summary>
+            Deliver a new array containing elements of set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.ToSet">
+            <summary>
+            Deliver a set value with the elements of this set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.Transform(System.Func{Microsoft.Modeling.Set{`0},Microsoft.Modeling.Set{`0}})">
+            <summary>
+            Perform a transformation of the content of the set container.
+            This is used for example together with LINQ query expressions, as 
+            in <c>sc.Transform(s => from x in s where x > 0 select x)</c>.
+            </summary>
+            <param name="func"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.Add(`0)">
+            <summary>
+            Add an element to this set.
+            </summary>
+            <param name="elem"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.Remove(`0)">
+            <summary>
+            Remove an element from this set.
+            </summary>
+            <param name="elem"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.Contains(`0)">
+            <summary>
+            Check whether an element is contained in this set.
+            </summary>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds the elements of an enumeration to this set.
+            </summary>
+            <param name="range"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.IntersectionWith(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructs the intersection of this set with the enumeration of some elements. Only those elements
+            which are in this set and in the enumeration are kept in the set.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.RemoveRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Removes the enumeration of elements from this set.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.GetEnumerator">
+            <summary>
+            Get the enumeration of elements in this set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get the enumeration of elements in the set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.Clear">
+            <summary>
+            Clears all elements in this set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.SetContainer`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the set into the array.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="P:Microsoft.Modeling.SetContainer`1.Count">
+            <summary>
+            Delivers the count of elements in the set.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.SetContainer`1.IsReadOnly">
+            <summary>
+            Always returns false.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.Combination">
+            <summary>
+            This class provides primitives to declare how value (parameter) combinations shall
+            be produced. 
+            </summary>
+            <remarks>
+            A value combination configuration consists of a set of statements which 
+            describe in a declarative way how value combinations are produced. Some of those statements
+            only apply if a particular combination method is chosen using the declaration <see cref="M:Microsoft.Modeling.Combination.Strategy(Microsoft.Modeling.CombinationStrategy)"/>.
+            The default method to use can be configured globally in a Spec Explorer configuration.
+            <para/>
+            The declarations can be given at the point where an action method is defined in 
+            a model program, or they can be associated with action declarations in a Cord script,
+            or they can be associated with a bind construct.
+            <para/>
+            It is particularly recommended not to use double ampersands (&amp;&amp;) and double pipes (||) in Boolean operands of the Combination class, 
+            but instead single ampersands (&amp;) and single pipes (|).
+            <para>
+            The following types of combination declarations are supported:
+            <list type="*">
+            <item>
+                Declaration of <see cref="M:Microsoft.Modeling.Combination.Interaction(System.Object[])"/>'s. Interactions define for which value combinations
+                a full cartesian product space shall be generated, and facilitate what is called n-way 
+                combination (CIT). A common case of interaction declarations is <see cref="M:Microsoft.Modeling.Combination.Pairwise(System.Object[])"/>, where
+                among a set of values, each is in pairwise interaction with each other value. 
+            </item>
+            <item>
+                Declaration of <see cref="M:Microsoft.Modeling.Combination.Isolated(System.Boolean[])"/> predicates, described by a boolean condition. 
+                For each isolation condition, a unique combination will be produced. All other combinations 
+                exclude that condition. Also, isolated combinations do not contribute to the interaction
+                coverage goal. Isolation conditions can, for example, be used for invalid values. 
+                Each invalid combination would be declared as isolated, which results in it being covered once and only once in the solution.
+            </item>
+            <item>
+                Declaration of <see cref="M:Microsoft.Modeling.Combination.Seeded(System.Boolean[])"/> predicates, described by a boolean condition.
+                For each seeded condition, at least one combination will be produced, independent
+                of interaction coverage goals. Seeds are automatically generated by the tool for each path condition
+                provided the parameter expansion point is selected as <see cref="F:Microsoft.Modeling.ParameterExpansionPoint.OnExit"/> (the 
+                default).  
+            </item>
+            <item>
+                Declaration of <see cref="M:Microsoft.Modeling.Combination.SetLimit(System.Int32)"/>Setting a limit on the number of combinations produced.     
+            </item>
+            </list>
+            </para>
+            <para>
+            The parameter generation algorithm generally works as described below:
+            <list type="*">
+            <item>
+                First, all the isolated combinations will be produced. If I1, I2 are isolation conditions, 
+                and C is the set of constraints, then we will get one combination which satisfies C&amp;I1&amp;!I2, 
+                and one combination which satisfies C&amp;!I1&amp;I2. The isolated combinations will not count against
+                interaction coverage. For the remaining solutions, let C' = C&amp;!I1&amp;!I2
+                be the constrained refined by exclusion of the isolated combinations.
+            </item>
+            <item>
+                Next the seeded combinations will be produced. If S1, S2 are seeding conditions, then
+                we will get one combination which satisfies C'&amp;S1 and one combination which satisifies C'&amp;S2. The
+                seeded combinations cound against interaction coverage.
+            </item>
+            <item>
+                Finally the combinations will be produced which satisfy the constraint C' (and haven't been produced before),
+                and which are necessary to reach the interaction coverage goal. Thereby, the algorithm attempts to produce the desired
+                interactions with the smallest number of combinations.
+            </item>
+            </list>
+            At any point, a declared limit can stop the enumeration of combinations. In general, combination enumeration 
+            is lazy, such that even a large combinatorial space, if limited, can be feasible.
+            </para>
+            <para>
+            An <see cref="T:System.InvalidOperationException"/> will be raised in the model execution if any of the isolated 
+            combinations do not exist, i.e., there does not exists a combination which satisfies the involved constraints. In contrast,
+            if no all interactions can be covered with the given constraints, no error will be raised, but the combination set
+            will be restricted. In general, it is guaranteed that the algorithm finds the highest possible numbers of interactions
+            which satisfy the constraints.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.Strategy(Microsoft.Modeling.CombinationStrategy)">
+            <summary>
+            Define the method to be used for parameter combinations. See <see cref="T:Microsoft.Modeling.CombinationStrategy"/> for explanations
+            what each method means.
+            </summary>
+            <param name="method"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.Interaction(System.Object[])">
+            <summary>
+            Declares that the given variables, parameters, or general expressions are in interaction, and the full cartesian product 
+            space should be produced for their possible values under the constraint.
+            </summary>
+            <param name="values">The variables, parameters, or expressions which are in interaction.</param>
+            <remarks>
+            This statement is used to declare that the given variables, parameters, or expressions have some interaction,
+            and therefore all possible value combinations for them shall be produced.
+            If no interaction statement is given, it is assumed that all values of the
+            combination problem are in interaction, effectively causing the generation of
+            the full cartesian space.
+            <para>
+            Example: suppose we have variables a,b,c,d, and each of them has a boolean domain.
+            <example>
+                Combination.Interaction(a,b);
+                Combination.Interaction(c,d);
+            </example>
+            The generation algorithm will try to produce the minimal set of combinations
+            such that the cartesian product of a and b, and of c and d is contained. More specifically,
+            one solution could be: <code>(a=false,b=false,c=false,d=false),(a=true,b=false,c=true,d=false),
+            (a=false,b=true,c=false,d=true),(a=true,b=true,c=true,d=true)</code>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.Pairwise(System.Object[])">
+            <summary>
+            Defines all given parameters to be in pairwise interaction. Pairwise(x,y,z)
+            is a shortcut for Interaction(x, y); Interaction(y,z);Interaction(z, x).
+            </summary>
+            <param name="values">The values which are in pairwise interaction.</param>
+            <exception cref="T:System.ArgumentException">
+            throw ArgumentException if length of values is less than 2.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.PairwiseDeep(System.Object[])">
+            <summary>
+            Defines all given values/nested field selections on values to be in deep pairwise interaction. If any
+            of the parameters is a struct or CompoundValue, then pairwise will be applied to all members of the 
+            struct or CompoundValue (and recursively). The effect can be understood as flattening the parameters 
+            into selecting all fields (recursively) and then applying Pairwise on them.
+            </summary>
+            <param name="values">The values which are in pairwise interaction.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.NWise(System.Int32,System.Object[])">
+            <summary>
+            Defines all given parameters to be in n-wise interaction. 
+            </summary>
+            <param name="n">The interaction strength</param>
+            <param name="values">The values which are in n-wise interaction.</param>
+            <exception cref="T:System.ArgumentException">
+            throw ArgumentException if length of values is less than interaction order.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.NWiseDeep(System.Int32,System.Object[])">
+            <summary>
+            Defines all given values/nested field selections on values to be in deep n-wise interaction. If any
+            of the parameters is a struct or CompoundValue, then n-wise will be applied to all members of the
+            struct  or CompoundValue (and recursively). The effect can be understood as flattening the parameters 
+            into selecting all fields (recursively) and then applying n-wise on them.
+            </summary>
+            <param name="n">The interaction strength</param>
+            <param name="values">The values which are in n-wise interaction.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.Isolated(System.Boolean[])">
+            <summary>
+            Declares that a combination should be generated which satisfies the
+            given isolation condition but none of the other isolation condition. 
+            </summary>
+            <param name="conditions">The isolation condition.</param>
+            <remarks>
+            This statement is usually used to declare error values which should be tested
+            in isolation from other error values and combinations. 
+            <para>
+            Example:
+            <example>
+              Combination.Isolated(x &lt; 0); 
+              Combination.Isolated(y &lt; 0);
+            </example>
+            One combination will be produced for each isolation statement which satisfies the isolation
+            condition, and which does not overlap with any of the other isolation conditions. Moreover.
+            all further combinations produced will not overlap with any of the isolation conditions. 
+            The isolated combination will not contribute to interaction coverage.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.Seeded(System.Boolean[])">
+            <summary>
+            Declares that a combination should be generated which satisfies the
+            given seeding conditions. 
+            </summary>
+            <param name="conditions">The seeding conditions.</param>
+            <remarks>
+            This statement is usually used to declare that certain combinations should be preferred
+            over other ones.
+            <para>
+            Example:
+            <example>
+              Combination.Seeded(x == 0, y == 0); 
+              Combination.Seeded(x == 1, y == 0);
+            </example>
+            One combination will be produced for each seeding statement. The combination
+            counts against the interaction coverage goal and will not be repeated.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.SetLimit(System.Int32)">
+            <summary>
+            Set a limit on the number of combinations produced.
+            </summary>
+            <param name="numberOfCombinations"></param>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.Expand(System.Object[])">
+            <summary>
+            Explicitly invokes generation of combinations at given execution point.
+            </summary>
+            <param name="values">The values.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.ExcludeFromExpansion(System.Object[])">
+            <summary>
+            Excludes the given values from expansion. If the values are not expanded later (either explicitly 
+            or implicitly), this call will have no effect.
+            </summary>
+            <param name="values">The values to be excluded from expansion.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Combination.KeepUnexpanded(System.Object[])">
+            <summary>
+            Keep the given values unexpanded in the entire exploration. If the values are not expanded later 
+            (either explicitly or implicitly), this call will have no effect.
+            </summary>
+            <param name="values">The values to be kept unexpanded.</param>
+        </member>
+        <member name="T:Microsoft.Modeling.CombinationStrategy">
+            <summary>
+            Specifies which method to use for combination generation. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.CombinationStrategy.Product">
+            <summary>
+            Generate cartesian product if no interactions have been specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.CombinationStrategy.Coverage">
+            <summary>
+            Generate interaction and path coverage. If no interactions are given, only deals with path coverage
+            and potential seeds and isolations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.CombinationStrategy.Pairwise">
+            <summary>
+            Generate pairwise combinations over all parameters. For less then 3 parameters, this equals to product.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.CombinationStrategy.None">
+            <summary>
+            Do not generate any combinations; keep values symbolic. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.Condition">
+            <summary>
+            Conditions are evaluated as part of exploration.
+            They determine whether a model rule is enabled and they impose constraints on parameter values to be generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.IsTrue(System.Boolean)">
+            <summary>
+            Establishes a condition that must be true for a step to be produced.
+            </summary>
+            <param name="condition">Condition that needs to be true.</param>
+            <example>
+            
+            <code>
+            [Rule]
+            static void MyMethod(int x)
+            {
+                Condition.IsTrue(x &gt; 0);
+                stateVariable = x;
+            }
+            </code>
+            
+            If the context in which this action is explored has caused x to have a concrete value, 
+            for example, through binding or parameter expansion of a domain, 
+            Spec Explorer can compare it with zero and thus determine whether a rule should be 
+            added as a step to the exploration. 
+            If, on the contrary, x contains a symbolic value, the step is generated, 
+            and the constraint is added to the state, effectively causing stateVariable to be assumed to contain a positive value.
+            </example>
+            <example>
+            The state in which the condition is evaluated (that is, added as a constraint) is not necessarily the source state of 
+            the action because the call to <see cref="M:Microsoft.Modeling.Condition.IsTrue(System.Boolean)"/> does not need to be at the beginning of the rule body. 
+            If there are previous statements that cause the state to be updated,
+            the condition is evaluated in the state resulting from the updates, as in the following example.
+            
+            <code>
+            [Rule]
+            static void MyMethod(int x)
+            {
+                stateVariable = 1;
+                Condition.IsTrue(StateVariable &gt; 0);
+                stateVariable = x;
+            }
+            </code>
+            
+            In this case, the rule is added as a step to the exploration, because, 
+            at the point where the condition is evaluated, StateVariable contains a positive value.
+            </example>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.IsTrue(System.Boolean,System.String)">
+            <summary>
+            Establishes a condition that must be true for a step to be produced and a requirement to be captured.
+            </summary>
+            <param name="condition">Condition that needs to be true</param>
+            <param name="requirement">Requirement to be captured if the condition holds.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.IsFalse(System.Boolean)">
+            <summary>
+            Establishes a condition that must be false for a step to be produced.
+            </summary>
+            <param name="condition">Condition that needs to be false.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.Fail">
+            <summary>
+            Prevents a step from being produced.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.IfThen(System.Boolean,System.Boolean)">
+            <summary>
+            Establishes the condition that the consequent must be true whenever the antecedent is true for a step to be produced. 
+            Equivalent to IsTrue(!antecedent | consequent).
+            </summary>
+            <param name="antecedent">Condition to be evaluated.</param>
+            <param name="consequent">Condition that must be true when the antecedent is true.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.All``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Establishes the condition that a predicate must be true for all elements in an enumeration, for a step to be produced.
+            </summary>
+            <typeparam name="T">Type of the elements in the enumeration.</typeparam>
+            <param name="source">Enumeration that contains the elements to apply the predicate to.</param>
+            <param name="predicate">Function to test each element for a condition.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.Exists``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Establishes the condition that a predicate must be true for at least one element in an enumeration, for a step to be produced.
+            </summary>
+            <typeparam name="T">Type of the elements in the enumeration.</typeparam>
+            <param name="source">Enumeration that contains the elements to apply the predicate to.</param>
+            <param name="predicate">Function to test each element for a condition.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.In``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Establishes the condition that one value must be a member of an enumeration for a step to be produced.
+            </summary>
+            <typeparam name="T">Type of the element.</typeparam>
+            <param name="element">Element that needs to be in the enumeration.</param>
+            <param name="values">Enumeration that needs to contain the element.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.In``1(``0,``0[])">
+            <summary>
+            Establishes the condition that one value must be a member of an enumeration for a step to be produced.
+            </summary>
+            <example>
+            The following example associates the name parameter with the set of values that follow:
+            <code>
+            Condition.In&lt;string&gt;(name, "@$^", "t.cmd", "t.exe");
+            </code>
+            </example>
+            <typeparam name="T">Type of the element.</typeparam>
+            <param name="element">Element that needs to be in the enumeration.</param>
+            <param name="values">Enumeration that needs to contain the element.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.IsNull(System.Object)">
+            <summary>
+            Establishes the condition that the specified object must be a null reference for a step to be produced.
+            </summary>
+            <param name="value">Value to verify is a null reference.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.IsNotNull(System.Object)">
+            <summary>
+            Establishes the condition that the specified object must not be a null reference for a step to be produced.
+            </summary>
+            <param name="value">Value to verify is not a null reference.</param>
+        </member>
+        <member name="M:Microsoft.Modeling.Condition.AssertIsTrue(System.Boolean)">
+            <summary>
+            Verifies a condition that must be true, otherwise the step will end in an error state.
+            </summary>
+            <param name="condition">Conditions that must be true or an error state will be produced.</param>
+        </member>
+        <member name="T:Microsoft.Modeling.ModelingAssemblyAttribute">
+            <summary>
+            An attribute indicating that an assembly contains modeling constructs
+            and should be scanned for those. By default, only the main project
+            assembly is scanned for modeling constructs. Add this attribute
+            for modeling assemblies which are intended to referenced.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.ParameterExpansionPoint">
+            <summary>
+            Indicates when to expand parameters in rule execution.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.ParameterExpansionPoint.OnEntry">
+            <summary>
+            Indicates parameters shall be expanded on entry to a rule method.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.ParameterExpansionPoint.OnExit">
+            <summary>
+            Indicates parameters shall be expanded on exit of a rule method (or at the first non-deterministic choice point).
+            This is the default.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.ParameterExpansionPoint.OnBranch">
+            <summary>
+            Indicates parameters shall be expanded on a branching point.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Modeling.ParameterExpansionPoint.None">
+            <summary>
+            Indicates parameters shall not be expanded automatically.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.RuleAttribute">
+            <summary>
+            The Rule attribute makes a method as a model program rule. Rule methods are explored in each exploration state.
+            They produce a step if and only if all its conditions can be satisfied. A rule that has at least one condition that 
+            cannot be met in a state will be silently ignored for that step.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.RuleAttribute.#ctor">
+            <summary>
+            Constructs a rule attribute with default action pattern and empty mode transformation.
+            The default action pattern is automatically built from method signature.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.RuleAttribute.Action">
+            <summary>
+            The action pattern in cord syntax.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.RuleAttribute.ModeTransition">
+            <summary>
+            Indicates the mode transition.
+            A mode transformation in a form like "s1,...,sn -> t1,...,tm", where s and t are mode tags.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Modeling.RuleAttribute.DefaultParameterExpansionPoint">
+            <summary>
+            Indicates where to place parameter expansion points. Defaults to <see cref="F:Microsoft.Modeling.ParameterExpansionPoint.OnExit"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.InitialModeAttribute">
+            <summary>
+            Initial mode attribute indicates the initial mode of a model program.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.InitialModeAttribute.#ctor(System.String)">
+            <summary>
+            Constructs an initial mode attribute.
+            </summary>
+            <param name="mode">A mode, given as a set of tags in a form like "t1,...,tn".</param>
+        </member>
+        <member name="P:Microsoft.Modeling.InitialModeAttribute.Mode">
+            <summary>
+            A mode, given as a set of tags in a form like "t1,...,tn".
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.AcceptingModeAttribute">
+            <summary>
+            Accepting mode attribute indicates the accepting modes of a model program.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.AcceptingModeAttribute.#ctor(System.String)">
+            <summary>
+            Constructs an initial mode attribute.
+            </summary>
+            <param name="mode">A mode, given as a set of tags in a form like "t1,...,tn".</param>
+        </member>
+        <member name="P:Microsoft.Modeling.AcceptingModeAttribute.Mode">
+            <summary>
+            A mode, given as a set of tags in a form like "t1,...,tn".
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.ErrorModeAttribute">
+            <summary>
+            Error mode attribute indicates the error modes of a model program.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.ErrorModeAttribute.#ctor(System.String)">
+            <summary>
+            Constructs an initial mode attribute.
+            </summary>
+            <param name="mode">A mode, given as a set of tags in a form like "t1,...,tn".</param>
+        </member>
+        <member name="P:Microsoft.Modeling.ErrorModeAttribute.Mode">
+            <summary>
+            A mode, given as a set of tags in a form like "t1,...,tn".
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.TypeBindingAttribute">
+            <summary>
+            Type binding attribute indicates to which target type a model type should be bound.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.TypeBindingAttribute.#ctor(System.String)">
+            <summary>
+            Constructs a type binding attribute.
+            </summary>
+            <param name="typeName">The target type to which to bind the given type.</param>
+        </member>
+        <member name="P:Microsoft.Modeling.TypeBindingAttribute.TypeName">
+            <summary>
+            type name for binding type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.StateInvariantAttribute">
+            <summary>
+            Attribute indicates that parameter-free method or property is a state invariant.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.StateFilterAttribute">
+            <summary>
+            Attribute indicates that parameter-free method or property is a state filter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.AcceptingStateConditionAttribute">
+            <summary>
+            Attribute indicates that parameter-free method or property is an accepting state condition.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.DomainAttribute">
+            <summary>
+            Attribute indicates a domain for a parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.DomainAttribute.#ctor(System.String)">
+            <summary>
+            Construct domain attribute.
+            </summary>
+            <param name="domain"></param>
+        </member>
+        <member name="P:Microsoft.Modeling.DomainAttribute.Domain">
+            <summary>
+            The domain of the parameter
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.FeatureAttribute">
+            <summary>
+            Attribute indicates that a class belongs to a named feature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.FeatureAttribute.#ctor(System.String)">
+            <summary>
+            Construct feature attribute.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:Microsoft.Modeling.FeatureAttribute.Name">
+            <summary>
+            The name of the feature.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.ProbeAttribute">
+            <summary>
+            Attribute that marks the target method/property as state probe, which will be shown in the 
+            state browser
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.AxiomaticMethodAttribute">
+            <summary>
+            This API supports the exploration infrastructure and is not intended to be used 
+            directly from your code.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.Untracked">
+            <summary>
+            Attribute indicates the value stored in this field should be excluded from model state. 
+            Value in an untracked field is stored in a global place so retrieving the field value from different states will result in same value, 
+            and altering field value will reflect to all states. 
+            Untracked fields won't affect state identification.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Modeling.LogicalOperations">
+            <summary>
+            A class which provides alternative object-oriented notations for commonly used logic operations.
+            The operators in this class have the property to have determined control flow, which makes them suitable for 
+            building up constraints in enabling conditions and in parameter constraints which do not create branching in the
+            execution flow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.LogicalOperations.And(System.Boolean,System.Boolean)">
+            <summary>
+            Logical conjunction: <c>c1.And(c2)</c> is equivalent to <c>c1 &amp; c2</c>
+            </summary>
+            <param name="c1"></param>
+            <param name="c2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.LogicalOperations.Or(System.Boolean,System.Boolean)">
+            <summary>
+            Logical disjunction: <c>c1.Or(c2)</c> is equivalent to <c>c1 | c2</c>
+            </summary>
+            <param name="c1"></param>
+            <param name="c2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.LogicalOperations.Not(System.Boolean)">
+            <summary>
+            Logical negation: <c>c.Not()</c> is equivalent to <c>!c1</c>. 
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.LogicalOperations.Implies(System.Boolean,System.Boolean)">
+            <summary>
+            Logical implication: <c>c1.Implies(c2)</c> is equivalent to <c>!c1 | c1 &amp; c2</c>
+            </summary>
+            <param name="c1"></param>
+            <param name="c2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.LogicalOperations.Iff(System.Boolean,System.Boolean)">
+            <summary>
+            Logical equivalence: <c>c1.Iff(c2)</c> is equivalent to <c>c1 == c2</c>. Read 'iff' as 'if and only if'.
+            </summary>
+            <param name="c1"></param>
+            <param name="c2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.LogicalOperations.Forall``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Universal quantification: if c1,c2,c3 are the elements of the enumerable e, then <c>e.Forall(p)</c> is equivalent to <c>true.And(p(c1)).And(p(c2)).And(p(c3))</c>. 
+            Use as in <c>e.Forall(x => boolean_expression_using_x</c>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Modeling.LogicalOperations.Exists``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Existential quantification: if c1,c2,c3 are the elements of the enumerable e, then <c>e.Exists(p)</c> is equivalent to <c>false.Or(p(c1)).Or(p(c2)).Or(p(c3))</c>. 
+            Use as in <c>e.Exists(x => boolean_expression_using_x</c>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Modeling.Probability">
+            <summary>
+            A class which can be used to make stochastic choices during model exploration.
+            Stochastic choices are rooted by a seed which can be set globally for exploration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Probability.IsTrue(System.Double)">
+            <summary>
+            Returns true with given probability. Probabilities are in range 0..1.
+            </summary>
+            <param name="probabilityForTrue">The probability with which this method should return true.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="probabilityForTrue"/> 
+            is less than zero or greater than one.</exception>
+        </member>
+        <member name="M:Microsoft.Modeling.Probability.Select``1(``0[],System.Double[])">
+            <summary>
+            Selects from the array of values with given probabilities.
+            each probability must be greater than or equal to zero.
+            </summary>
+            <param name="values">the array of values</param>
+            <param name="probabilities">the array of probabilities</param>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="values"/> 
+            and <paramref name="probabilities"/> have different length or any of them is
+            empty, or any element in <paramref name="probabilities"/> is less than zero.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Modeling.Probability.Choose``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Selects a value from the given enumeration with equal probability.
+            </summary>
+            <param name="domain">the domain element enumeration</param>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="domain"/> 
+            is empty.</exception>
+        </member>
+        <member name="T:Microsoft.Modeling.Requirement">
+            <summary>
+            A class which allows expressing requirement capture.
+            </summary>
+            <remarks>
+            Insert a call to Capture when the model program has reached a point that implies 
+            verification of a requirement. When such a call is encountered during exploration, 
+            the requirement is added to the set of captured requirements of the target step. 
+            This has semantic implications, because it causes exploration states to be considered 
+            different when the paths leading to them capture different requirement sets, 
+            even if they agree in all other respects.
+            <para/>
+            It is recommended as a best practice to use a requirement identifier as a parameter to <see cref="M:Microsoft.Modeling.Requirement.Capture(System.String)"/>,
+            rather than the requirement description.
+            <para/>
+            Requirements captured in exploration can be observed in the step browser. 
+            They are also listed in the graph viewer as part of step labels, 
+            provided the DisplayRequirements switch is set to <code>true</code>. 
+            The set of requirements captured in a step is defined as the set difference 
+            between requirements captured in its target state and those captured in its source.
+            <para/>
+            Requirement capture is also transferred to generated test code. 
+            When a step is successful during testing (that is, it is performed by the system under
+            test and the results satisfy the constraints in the target state), a log entry is output.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Modeling.Requirement.Capture(System.String)">
+            <summary>
+            Capture the requirement.
+            </summary>
+            <param name="requirement">The requirement to be captured.</param>
+            <remarks>
+            Use this method only for requirements that are effectively and explicitly 
+            verified in model code, usually in a precondition or assertion. 
+            If a requirement is considered to be implicitly valid from checks performed in other layers, 
+            such as an adapter or harness, declare it in a call to the <see cref="M:Microsoft.Modeling.Requirement.AssumeCaptured(System.String)"/> method.
+            </remarks>
+            <example>
+            The following example shows an event that is observed from the system. 
+            Its parameter must have a positive value. 
+            This condition is checked in the rule method precondition and is then declared to be captured.
+            <code>
+            config MyEvent
+            {
+                action abstract event static void ModelActions.MyMethod(int x);
+            }
+            
+            [Rule]
+            static void MyMethod(int x)
+            {
+                Condition.IsTrue(x &gt; 0);
+                Requirement.Capture("PositiveX");
+            }
+            </code>
+            This code is equivalent to the following:
+            <code>
+            [Rule]
+            static void MyMethod(int x)
+            {
+                Condition.IsTrue(x &gt; 0, "PositiveX");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Modeling.Requirement.AssumeCaptured(System.String)">
+            <summary>
+            Assume the requirement to be captured in implementation.
+            </summary>
+            <param name="requirement">The requirement assumed to be captured.</param>
+            <example>
+            In the following example, the fact that the event was raised by the harness is assumed
+            to mean that the system under test has not crashed and that the parameter value was correctly encoded. 
+            However, the model does not perform these checks itself. Accordingly, <see cref="M:Microsoft.Modeling.Requirement.AssumeCaptured(System.String)"/> is used.
+            <code>
+            [Rule]
+            static void MyMethod(int x)
+            {
+                Requirement.AssumeCaptured("HasNotCrashed");
+                Requirement.AssumeCaptured("CorrectEncoding");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Microsoft.Modeling.Xrt.State">
+            <summary>
+            Provides some reflection capabilities over the state. Only available
+            when running under XRT.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Modeling.Xrt.State.GetInstances``1">
+            <summary>
+            When running under XRT, delivers the living instances of type T.
+            When not running under XRT, delivers null.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.RuntimeSupport">
+            <summary>
+            Supports the XRT engine infrastructure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetInstances``1">
+            <summary>
+            When running under XRT, delivers the living instances of type T.
+            When not running under XRT, delivers null.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.BuiltinHashCode(System.Boolean,System.Object)">
+            <summary>
+            When running under XRT, performs builtin hashcode computation. When running under the CLR,
+            simulates the semantics of XRT's builtin hashcode computation.
+            </summary>
+            <param name="respectBoxIdentity">Whether box identities should be respected.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.BuiltinEquals(System.Boolean,System.Object,System.Object)">
+            <summary>
+            When running under XRT, performs built equality computation. When running under the CLR,
+            simulates XRT's behavior.
+            </summary>
+            <param name="respectBoxIdentity">Whether box identities should be respected.</param>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.RepresentationCompare``1(System.Boolean,``0,``0)">
+            <summary>
+            When running under XRT, realizes a linear order on the representation of values which subsumes builtin equality.
+            When running under the CLR, does comparsion of hash codes, which might not subsume builtin equality.
+            </summary>
+            <typeparam name="T">The base type under which the values should be interpreted.</typeparam>
+            <param name="respectBoxIdentity">Whether box identities should be respected.</param>
+            <param name="value1">The first value.</param>
+            <param name="value2">The second value.</param>
+            <returns></returns>
+            <remarks>This order is not used to replace equality, but to realize a normalized representation of
+            collections of values, which behaves well for state identification under XRT. If not running under XRT,
+            the normalization is not relevant, and therefore it is feasible in this case to provide a degenerated version
+            of ordering.</remarks>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.NextDouble">
+            <summary>
+            Gives access to internal random generator which is seeded by global configuration.
+            </summary>
+            <returns>A random value between 0.0 and 1.0</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Describe``1(``0)">
+            <summary>
+            Describes a (possibly symbolic) value.
+            </summary>
+            <typeparam name="T">type</typeparam>
+            <param name="value">(possibly symbolic) value</param>
+            <returns>description</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetVariableName``1(``0)">
+            <summary>
+            Get the name of the given variable. At Xrt runtime, if the given value is not a variable, <see cref="T:System.ArgumentException"/> will be thrown.
+            </summary>
+            <typeparam name="T">type</typeparam>
+            <param name="value">the variable value</param>
+            <returns>name of the variable</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Assume(System.Boolean)">
+            <summary>
+            Assumes that condition is true. When running under XRT, the execution path will be
+            pruned away if assumption is false.
+            </summary>
+            <param name="condition"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Assume(System.Boolean,System.String)">
+            <summary>
+            Assumes that condition is true. When running under XRT, the execution path will be
+            pruned away if assumption is false.
+            </summary>
+            <param name="condition"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.AssumeInvariant(System.Boolean)">
+            <summary>
+            Assumes the given condition globally for all execution paths.
+            </summary>
+            <param name="condition"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Assert(System.Boolean)">
+            <summary>
+            Asserts that condition is true. When running under XRT, the execution will fail with an
+            error if assertion is not true.
+            </summary>
+            <param name="condition"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Assert(System.Boolean,System.String)">
+            <summary>
+            Asserts that condition is true. When running under XRT, the execution will fail with an
+            error if assertion is not true.
+            </summary>
+            <param name="condition"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.AssumeInDomain``1(``0,``0[])">
+            <summary>
+            Assumes that a value is one of the given domain.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <param name="domain"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Expand(System.Object[])">
+            <summary>
+            Expands parameters.
+            </summary>
+            <param name="values"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.NWise(System.Boolean,System.Int32,System.Object[])">
+            <summary>
+            Creates deep pairwise interactions.
+            </summary>
+            <param name="deep"></param>
+            <param name="n"></param>
+            <param name="values"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Value``1">
+            <summary>
+            Creates a symbolic value.
+            </summary>
+            <typeparam name="T">the type</typeparam>
+            <returns>symbolic value</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Ground``1(``0)">
+            <summary>
+            Ensures that a value is ground.
+            </summary>
+            <param name="value">possibly symbolic value</param>
+            <returns>ground value</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.TryGround``1(``0)">
+            <summary>
+            Grounds a symbolic value if possible, otherwise keeps like is.
+            </summary>
+            <param name="value">possibly symbolic value</param>
+            <returns>ground value or original value</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.IsGround``1(``0)">
+            <summary>
+            Determines if a value is ground.
+            </summary>
+            <param name="value">possibly symbolic value</param>
+            <returns>whether value is ground</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.IsShallowGround``1(``0)">
+            <summary>
+            Determines if a value is shallow ground.
+            </summary>
+            <param name="value">possibly symbolic value</param>
+            <returns>whether value is shallow ground</returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.CreateAuxiliaryFunctionApplication``1(System.String,System.Object[])">
+            <summary>
+            This method supports the exploration infrastructure and is not intended to be used directly from your code.
+            </summary>
+            <param name="name"></param>
+            <param name="arguments"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.CreateChoicePoint``1(``0)">
+            <summary>
+            Create a choice point.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="x"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.IsNullOrEmpty(System.String)">
+            <summary>
+            return true if value == null or value == "".
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Quantifier(Microsoft.Xrt.Runtime.QuantifierKind,System.Boolean,System.Object[])">
+            <summary>
+            Creates a quantifier of given kind with given bounds. Typically, the bounds are symbolic values
+            which have been obtained with <see cref="M:Microsoft.Xrt.Runtime.RuntimeSupport.Value``1"/>. This is used to express data type invariants.
+            </summary>
+            <param name="kind"></param>
+            <param name="body"></param>
+            <param name="bounds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetEnumerationAsArray``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts an enumerable to array.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.EngineDebuggerBreak">
+            <summary>
+            This method supports the exploration infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.MakeMap``2">
+            <summary>
+            Creates a new runtime map.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.MakeMapElement``1(``0)">
+            <summary>
+            Creates an element for a runtime map.
+            </summary>
+            <typeparam name="R"></typeparam>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.UpdateMap``2(Microsoft.Xrt.Runtime.RuntimeMap{``0,``1},``0,Microsoft.Xrt.Runtime.RuntimeMapElement{``1})">
+            <summary>
+            Updates a runtime map. Use null as element to remove.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="map"></param>
+            <param name="dom"></param>
+            <param name="ran"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.SelectMap``2(Microsoft.Xrt.Runtime.RuntimeMap{``0,``1},``0)">
+            <summary>
+            Select from a runtime map. Returns null if not present.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="map"></param>
+            <param name="dom"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetMapCount``2(Microsoft.Xrt.Runtime.RuntimeMap{``0,``1})">
+            <summary>
+            Get the number of elements in the map.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="map"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.ChooseMapDomainValue``2(Microsoft.Xrt.Runtime.RuntimeMap{``0,``1})">
+            <summary>
+            Choose a unique domain element. 
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="map"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.SplitMap``2(Microsoft.Xrt.Runtime.RuntimeMap{``0,``1})">
+            <summary>
+            Splits the map into a head and rest.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="map"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.MakeNativeRuntimeMap``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Creates a new native version of a runtime map based on given dictionary content. Must
+            not be executed when running under XRT.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetNativeRuntimeMapContent``2(Microsoft.Xrt.Runtime.RuntimeMap{``0,``1})">
+            <summary>
+            Returns a reference to the underlying dictionary of a native version of a runtime map. Must
+            not be executed when running under XRT.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+            <param name="map"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.MakeList``1(``0,Microsoft.Xrt.Runtime.RuntimeList{``0})">
+            <summary>
+            Construct a runtime list cell from head and tail.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="head"></param>
+            <param name="tail"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetListHead``1(Microsoft.Xrt.Runtime.RuntimeList{``0})">
+            <summary>
+            Get the head of a runtime list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetListTail``1(Microsoft.Xrt.Runtime.RuntimeList{``0})">
+            <summary>
+            Get the tail of a runtime list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.AppendList``1(Microsoft.Xrt.Runtime.RuntimeList{``0},Microsoft.Xrt.Runtime.RuntimeList{``0})">
+            <summary>
+            Append two runtime lists.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.SelectList``1(Microsoft.Xrt.Runtime.RuntimeList{``0},System.Int32)">
+            <summary>
+            Select element at index from runtime list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.GetListCount``1(Microsoft.Xrt.Runtime.RuntimeList{``0})">
+            <summary>
+            Get the number of elements in a runtime list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeSupport.Create``1(System.String[],System.Object[])">
+            <summary>
+            Creates a value with non-public constructor/fields
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fieldValues"></param>
+            <param name="fieldNames"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Xrt.Runtime.RuntimeSupport.RunningUnderXrt">
+            <summary>
+            Determines whether the caller is executed under XRT.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.QuantifierKind">
+            <summary>
+            Kind of a quantifier.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.QuantifierKind.Forall">
+            <summary>
+            Universal quantification.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.QuantifierKind.Exists">
+            <summary>
+            Existential quantification.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.RuntimeMap`2">
+            <summary>
+            A class which represents a core collection type on base of which other types are implemented. Supports the XRT infrastructure.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeMap`2.Equals(System.Object)">
+            <summary>
+            Equality on runtime maps. 
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeMap`2.GetHashCode">
+            <summary>
+            Hashcode of runtime maps.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeMap`2.ToString">
+            <summary>
+            Convert runtime map to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeMap`2.Equals(`0,`0)">
+            <summary>
+            builtin value equality for runtime map.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeMap`2.GetHashCode(`0)">
+            <summary>
+            builtin hash code for runtime map.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.RuntimeMapElement`1">
+            <summary>
+            A class which represents a range element of a runtime map. Supports the XRT infrastructure.
+            </summary>
+            <typeparam name="R"></typeparam>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.RuntimeMapElement`1.Element">
+            <summary>
+            The value of the element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeMapElement`1.#ctor">
+            <summary>
+            Supports the infrastructure. Do not use.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.RuntimeMapSplit`2">
+            <summary>
+            A class which represents the result of splitting a map.
+            </summary>
+            <typeparam name="D"></typeparam>
+            <typeparam name="R"></typeparam>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.RuntimeMapSplit`2.Key">
+            <summary>
+            The key of the head.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.RuntimeMapSplit`2.Element">
+            <summary>
+            The element of the head.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.RuntimeMapSplit`2.Rest">
+            <summary>
+            The rest of the map.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeMapSplit`2.#ctor">
+            <summary>
+            Supports the infrastructure. Do not use.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.Singleton">
+            <summary>
+            An enumeration type to represent a singleton (a type which contains just one element)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.Singleton.Single">
+            <summary>
+            The single element of the singleton type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.RuntimeList`1">
+            <summary>
+            A class which represents a runtime list. Supports the XRT infrastructure.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.RuntimeList`1.Head">
+            <summary>
+            The head of the list.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrt.Runtime.RuntimeList`1.Tail">
+            <summary>
+            The tail of the list.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeList`1.#ctor">
+            <summary>
+            Supports the infrastructure. Do not use.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeList`1.#ctor(`0,Microsoft.Xrt.Runtime.RuntimeList{`0})">
+            <summary>
+            Constructs a runtime list with initialized fields.
+            </summary>
+            <param name="head"></param>
+            <param name="tail"></param>
+        </member>
+        <member name="M:Microsoft.Xrt.Runtime.RuntimeList`1.ToString">
+            <summary>
+            convert runtime list to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Xrt.Runtime.ValueTypeHelper">
+            <summary>
+            This class is used by metadata (program) implementation to simulate some implicit functionality.
+            </summary>
+        </member>
+    </members>
+</doc>
