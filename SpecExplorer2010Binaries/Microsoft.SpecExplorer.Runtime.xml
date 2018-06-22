@@ -1,0 +1,1170 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SpecExplorer.Runtime</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager">
+            <summary>
+            The default test manager, test manager supervises test case running process, and provides
+            logging and checking functionality.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.ITestManager">
+            <summary>
+            The base type of test managers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.GetAdapter(System.Type)">
+            <summary>
+            Retrieves singleton instance of an adapter of the given type; throws exception on failure.
+            </summary>
+            <param name="adapterType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.SelectSatisfiedPreConstraint(System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedPreConstraint[])">
+            <summary>
+            select one satisfied pre-constraint from one or more expected preconstraints described by patterns.
+            </summary>   
+            <param name="failIfNone">Behavior on failure.</param>
+            <param name="expected">Expected pre constraints</param>
+            <returns>
+             Returns index of expected if preconstraint is satisfied.
+             if none of the pre-constraints satisfies, returns -1 if <c>failIfNone</c> is false, otherwise
+             produces test failure with corresponding diagnostics.
+            </returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.Subscribe(System.Reflection.EventInfo,System.Object)">
+            <summary>
+            Let test manager subscribe to the given event. Events raised
+            on this <paramref name="eventInfo"/> will be propagated to the event queue.
+            </summary>
+            <param name="eventInfo">The event reflection information.</param>
+            <param name="target">The target (instance to which the event belongs).</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.Unsubscribe(System.Reflection.EventInfo,System.Object)">
+            <summary>
+            Let test manager unsubscribe from the given event.
+            </summary>
+            <param name="eventInfo">The event reflection information.</param>
+            <param name="target">The target (instance to which the event belongs).</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.AddEvent(System.Reflection.EventInfo,System.Object,System.Object[])">
+            <summary>
+            Adds an event to the event queue.
+            </summary>
+            <param name="eventInfo">The reflection information of the event.</param>
+            <param name="target">
+            The target object. Must be given for instance-based, non-adapter methods, 
+            otherwise must be null.
+             </param>
+            <param name="arguments">the arguments to the return method.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.ExpectEvent(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent[])">
+            <summary>
+            Expect one or more events described by patterns.
+            </summary>
+            <param name="timeOut">Time to wait for event.</param>
+            <param name="failIfNone">Behavior on failure.</param>
+            <param name="expected">Expected events</param>
+            <returns>
+             Returns index of expected which matched if event is available in time.
+             If event is not available, returns -1 if <c>failIfNone</c> is false, otherwise
+             produces test failure with regarding diagnostics.
+            </returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.TryGetNextEvent(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent@)">
+            <summary>
+            Try get next available event in event queue.
+            </summary>
+            <param name="timeOut">Time to wait for event.</param>
+            <param name="consume">If true, event will be removed from queue of available</param>
+            <param name="availableEvent">Holds the available event.</param>
+            <returns>True if event is available within time limits.</returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.AddReturn(System.Reflection.MethodBase,System.Object,System.Object[])">
+            <summary>
+            Adds a method return to the return queue.
+            </summary>
+            <param name="methodInfo">The reflection information of the method.</param>
+            <param name="target">The target object. Must be given for instance-based, non-adapter methods, 
+              must be null otherwise.</param>
+            <param name="arguments"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.ExpectReturn(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn[])">
+            <summary>
+            Expect one or more returns described by patterns.
+            </summary>
+            <param name="timeOut">Time to wait for return.</param>
+            <param name="failIfNone">Behavior on failure.</param>
+            <param name="expected">Expected returns</param>
+            <returns>
+             Returns index of expected which matched if return is available in time.
+             If return is not available, returns -1 if <c>failIfNone</c> is false, otherwise
+             produces test failure with regarding diagnostics.
+            </returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.TryGetNextReturn(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.AvailableReturn@)">
+            <summary>
+            Try get next available return in return queue.
+            </summary>
+            <param name="timeOut">Time to wait for event.</param>
+            <param name="consume">If true, event will be removed from queue of available</param>
+            <param name="availableReturn">Holds the available event.</param>
+            <returns>True if return is available within time limits.</returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.BeginTest(System.String)">
+            <summary>
+            Begins executing a test case.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.EndTest">
+            <summary>
+            Ends executing a test case.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.Assert(System.Boolean,System.String)">
+            <summary>
+            Executes a test assertion.
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.Assume(System.Boolean,System.String)">
+            <summary>
+            Executes a test assumption.
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.Checkpoint(System.String)">
+            <summary>
+            Executes a checkpoint.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.Comment(System.String)">
+            <summary>
+            Logs a comment about test execution.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.CheckObservationTimeout(System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent[])">
+            <summary>
+            Upon observation timeout, checks current event observation queue status and decides 
+            whether case should pass or fail.
+            </summary>
+            <param name="isAcceptingState"></param>
+            <param name="expected"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.CreateVariable``1(System.String)">
+            <summary>
+            Creates a new variable which can be transacted.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.GenerateValue``1">
+            <summary>
+            Generates a default value of type T.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.BeginTransaction">
+            <summary>
+            Begins a transaction. Note that the execution of a Checker happens implicitly within a transaction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.EndTransaction(System.Boolean)">
+            <summary>
+            Ends transaction, either committing variables which have been bound, or rolling them back. 
+            Note that the execution of a Checker happens implicitly within a transaction.
+            </summary>
+            <param name="commit"></param>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.RandomSeed">
+            <summary>
+            Random seed for value generation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ITestManager.ThrowTestFailureException">
+            <summary>
+            if true, throw predefined <see cref="T:Microsoft.SpecExplorer.Runtime.Testing.TestFailureException"/> when assertion fails and dynamic traversal
+            can catch it and decide how to proceed.
+            Otherwise, leaves to test control manager to handle assertion failure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.#ctor(Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite,System.Int32,System.Int32)">
+            <summary>
+            Constructs a test manager base, with given test site, maximal sizes for event and return queue.
+            </summary>
+            <param name="site">Basic test site.</param>
+            <param name="maxEventQueueSize">Maximal size for event queue. Not implemented yet.</param>
+            <param name="maxReturnQueueSize">Maximal size for return queue. Not implemented yet.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.#ctor(Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite)">
+            <summary>
+            Constructs a test manager base.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.GetAdapter(System.Type)">
+            <summary>
+            Retrieves singleton instance of an adapter of the given type; throws exception on failure.
+            </summary>
+            <param name="adapterType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Subscribe(System.Reflection.EventInfo,System.Object)">
+            <summary>
+            Let test manager subscribe to the given event. Events raised
+            on this <paramref name="eventInfo"/> will be propagated to the event queue.
+            </summary>
+            <param name="eventInfo">The event reflection information.</param>
+            <param name="target">The target (instance to which the event belongs).</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Unsubscribe(System.Reflection.EventInfo,System.Object)">
+            <summary>
+            Let test manager unsubscribe from the given event.
+            </summary>
+            <param name="eventInfo">The event reflection information.</param>
+            <param name="target">The target (instance to which the event belongs).</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.AddEvent(System.Reflection.EventInfo,System.Object,System.Object[])">
+            <summary>
+            Adds an event to the event queue.
+            </summary>
+            <param name="eventInfo">The reflection information of the event.</param>
+            <param name="target">
+            The target object. Must be given for instance-based, non-adapter methods, 
+            otherwise must be null.
+             </param>
+            <param name="arguments">the arguments to the return method.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.AddReturn(System.Reflection.MethodBase,System.Object,System.Object[])">
+            <summary>
+            Adds a method return to the return queue.
+            </summary>
+            <param name="methodInfo">The reflection information of the method.</param>
+            <param name="target">
+            The target object. Must be given for instance-based, non-adapter methods, 
+            must be null otherwise.
+             </param>
+            <param name="arguments">the arguments to the return method.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.TryGetNextEvent(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent@)">
+            <summary>
+            Try get next available event in event queue.
+            </summary>
+            <param name="timeOut">Time to wait for event.</param>
+            <param name="consume">If true, event will be removed from queue of available</param>
+            <param name="availableEvent">Holds the available event.</param>
+            <returns>True if event is available within time limits.</returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.TryGetNextReturn(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.AvailableReturn@)">
+            <summary>
+            Try get next available return in return queue.
+            </summary>
+            <param name="timeOut">Time to wait for event.</param>
+            <param name="consume">If true, event will be removed from queue of available</param>
+            <param name="availableReturn">Holds the available event.</param>
+            <returns>True if return is available within time limits.</returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.ExpectEvent(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent[])">
+            <summary>
+            Expects one or more events described by patterns.
+            </summary>
+            <param name="timeOut">Time to wait for event.</param>
+            <param name="failIfNone">Behavior on failure.</param>
+            <param name="expected">Expected events.</param>
+            <returns>
+             Returns index of expected which matched if event is available in time.
+             If event is not available, returns -1 if <c>failIfNone</c> is false, otherwise
+             produces test failure with corresponding diagnostics.
+            </returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.ExpectReturn(System.TimeSpan,System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn[])">
+            <summary>
+            Expects one or more returns described by patterns.
+            </summary>
+            <param name="timeOut">Time to wait for return.</param>
+            <param name="failIfNone">Behavior on failure.</param>
+            <param name="expected">Expected returns</param>
+            <returns>
+             Returns index of expected which matched if return is available in time.
+             If return is not available, returns -1 if <c>failIfNone</c> is false, otherwise
+             produces test failure with corresponding diagnostics.
+            </returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.SelectSatisfiedPreConstraint(System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedPreConstraint[])">
+            <summary>
+            Selects one satisfied pre-constraint from one or more given preconstraints described by patterns.
+            </summary>   
+            <param name="printDiagnosisIfFail">Behavior on failure.</param>
+            <param name="expected">Expected pre constraints</param>
+            <returns>
+             Returns index of the first preconstraint which satisfies.
+             if none of the pre-constraints satisfies, returns -1 if <c>failIfNone</c> is false, otherwise
+             produces test failure with corresponding diagnostics.
+            </returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.BeginTest(System.String)">
+            <summary>
+            Begins executing a test case.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.EndTest">
+            <summary>
+            Ends executing a test case.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Assert(System.Boolean,System.String)">
+            <summary>
+            Executes a test assertion.
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Assume(System.Boolean,System.String)">
+            <summary>
+            Executes a test assumption.
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Checkpoint(System.String)">
+            <summary>
+            Executes a checkpoint.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Comment(System.String)">
+            <summary>
+            Logs a comment about test execution.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.CheckObservationTimeout(System.Boolean,Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent[])">
+            <summary>
+            Upon observation timeout, checks current event observation queue status and decides 
+            whether case should pass or fail.
+            </summary>
+            <param name="isAcceptingState"></param>
+            <param name="expected"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.CreateVariable``1(System.String)">
+            <summary>
+            Creates a new variable which can be transacted.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.GenerateValue``1">
+            <summary>
+            Generates a default value of type T.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.BeginTransaction">
+            <summary>
+            Begins a transaction. Note that the execution of a Checker happens implicitly within a transaction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.EndTransaction(System.Boolean)">
+            <summary>
+            Ends transaction, either committing variables which have been bound, or rolling them back. 
+            Note that the execution of a Checker happens implicitly within a transaction.
+            </summary>
+            <param name="commit"></param>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.RandomSeed">
+            <summary>
+            Random seed for value generation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.ThrowTestFailureException">
+            <summary>
+            if true, throw predefined <see cref="T:Microsoft.SpecExplorer.Runtime.Testing.TestFailureException"/> when assertion fails and dynamic traversal
+            can catch it and decide how to proceed.
+            Otherwise, leaves to test control manager to handle assertion failure.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.IVariable`1">
+            <summary>
+            Type representing a transacted variable.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IVariable`1.Unbind">
+            <summary>
+            Resets the variable to unbound state, so that it
+            can be bound to new value later.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.IVariable`1.IsBound">
+            <summary>
+            Determines whether the variable is bound.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.IVariable`1.Value">
+            <summary>
+            Gets or sets a value. If the variable is bound, setting
+            will result in an equality check on its current value
+            with the given value. If the variable is unbound, getting
+            will result in generation of a default value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Variable`1.IsBound">
+            <summary>
+            Determines whether the variable is bound.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager.Variable`1.Value">
+            <summary>
+            Gets or sets a value. If the variable is bound, setting
+            will result in an equality check on its current value
+            with the given value. If the variable is unbound, getting
+            will result in generation of a default value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase">
+            <summary>
+            Base class for test class code generated by Spec Explorer. Every TCM integration must derive from that. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite">
+            <summary>
+            Represents basic functionality required by the test manager from the test site.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.GetAdapter(System.Type)">
+            <summary>
+            Retrieves singleton instance of an adapter of the given type; throws exception on failure.
+            </summary>
+            <param name="adapterType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.BeginTest(System.String)">
+            <summary>
+            Begins executing a test case.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.EndTest">
+            <summary>
+            Ends executing a test case.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Assert(System.Boolean,System.String)">
+            <summary>
+            Executes a test assertion.
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Assume(System.Boolean,System.String)">
+            <summary>
+            Executes a test assumption.
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Checkpoint(System.String)">
+            <summary>
+            Executes a checkpoint.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Comment(System.String)">
+            <summary>
+            Logs a comment about test execution.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.IConfigurableGeneratedTestClass">
+            <summary>
+            a test class enables configuring test properties at runtime.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass">
+            <summary>
+            Interface to be implemented by classes used as base class
+            of generated test suite
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass.SetSwitch(System.String,System.String)">
+            <summary>
+            Sets a switch.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass.InitializeTestManager">
+            <summary>
+            Initializes the test manager. Implementation can instantiate 
+            <see cref="T:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager"/>, unless one wants to implement
+            a completely new test manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass.CleanupTestManager">
+            <summary>
+            Cleans up the test manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass.Make``1(System.String[],System.Object[])">
+            <summary>
+            Creates a Struct of type T with given field initialization.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fieldNames"></param>
+            <param name="fieldValues"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass.QuiescenceTimeout">
+            <summary>
+            Gets or sets quiescence timeout. Is initialized from switch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass.ProceedControlTimeout">
+            <summary>
+            Gets or sets proceed control timeout. Is initialized from switch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.IGeneratedTestClass.Manager">
+            <summary>
+            Returns the test manager. Only valid after initialization and before cleanup.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.IConfigurableGeneratedTestClass.TestProperties">
+            <summary>
+            Return test properties set up for this test class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.IConfigurableGeneratedTestClass.LogToFile">
+            <summary>
+            whether log comment/checkpoint into file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.SetSwitch(System.String,System.String)">
+            <summary>
+            Sets a switch.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.InitializeTestManager">
+            <summary>
+            Initializes the test manager. The default is
+            to instantiate <see cref="T:Microsoft.SpecExplorer.Runtime.Testing.DefaultTestManager"/>, which
+            in turn gets passed this instance as an <see cref="T:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite"/>.
+            Usually, this doesn't need to be overridden unless one wants to implement
+            a complete new test manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.CleanupTestManager">
+            <summary>
+            Cleans up the test manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Make``1(System.String[],System.Object[])">
+            <summary>
+            Creates a Struct of type T with given field initialization.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fieldNames"></param>
+            <param name="fieldValues"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.GetAdapter(System.Type)">
+            <summary>
+            Retrieves singleton instance of an adapter of the given type; throws exception on failure.
+            </summary>
+            <param name="adapterType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.BeginTest(System.String)">
+            <summary>
+            <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.BeginTest(System.String)"/>
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.EndTest">
+            <summary>
+            <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.EndTest"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Assert(System.Boolean,System.String)">
+            <summary>
+              <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Assert(System.Boolean,System.String)"/>
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Assume(System.Boolean,System.String)">
+            <summary>
+              <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Assume(System.Boolean,System.String)"/>
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Checkpoint(System.String)">
+            <summary>
+              <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Checkpoint(System.String)"/>
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Comment(System.String)">
+            <summary>
+              <see cref="M:Microsoft.SpecExplorer.Runtime.Testing.IBasicTestSite.Comment(System.String)"/>
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.QuiescenceTimeout">
+            <summary>
+            Gets or sets quiescence timeout. Is initialized from switch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.ProceedControlTimeout">
+            <summary>
+            Gets or sets proceed control timeout. Is initialized from switch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.Manager">
+            <summary>
+            Returns the test manager. Only valid after initialization and before cleanup.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.TestProperties">
+            <summary>
+            Return test properties set up for this test class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.GeneratedTestClassBase.LogToFile">
+            <summary>
+            whether log comment/checkpoint into file.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.IBypassingTestSite">
+            <summary>
+            Extends IsTrue interface which check condition together with description to by-pass assertion failure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.IBypassingTestSite.IsTrue(System.Boolean,System.String)">
+            <summary>
+            Check condition together with description to by-pass assertion failure. It returns false if and only if condition is false and description is not by-passed.
+            </summary>
+            <param name="condition"></param>
+            <param name="description"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent">
+            <summary>
+            A type to describe an expected event.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent.callingStyle">
+            <summary>
+            The way how to call the checker.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent.#ctor(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            Constructs an expected event.
+            </summary>
+            <param name="eventInfo">The reflection information of the event.</param>
+            <param name="target">The target object. Must be null for static events and for adapter events.</param>
+            <param name="checker">
+                The checker. Must match the type of the event. A compatible type is a delegate type
+                either taking an array of objects as arguments, exactly the arguments of the event, or
+                exactly the arguments of the event preceded by an instance of the event target.      
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent.ToString">
+            <summary>
+            Delivers readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent.Event">
+            <summary>
+            The event waited for, identified by its
+            reflection representation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent.Target">
+            <summary>
+            The target of the event (the instance object where the event
+            belongs too), or null, if it is a static or an adapter event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ExpectedEvent.Checker">
+            <summary>
+            The checker to be called when the event
+            arrives. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn">
+            <summary>
+            A type to describe an expected method return.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn.callingStyle">
+            <summary>
+            The way how to call the checker.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn.#ctor(System.Reflection.MethodBase,System.Object,System.Delegate)">
+            <summary>
+            Constructs an expected method return.
+            </summary>
+            <param name="methodInfo">The reflection information of the method.</param>
+            <param name="target">The target object. Must be null for static methods and for adapter methods.</param>
+            <param name="checker">
+                The checker. Must match the type of the method. A compatible type is a delegate type
+                either taking an array of objects as arguments, exactly the arguments of the method outputs, or
+                exactly the arguments of the method outputs preceded by an instance of the method target.     
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn.ToString">
+            <summary>
+            Delivers readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn.Method">
+            <summary>
+            The method for which a return is expected,
+            identified by its reflection representation
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn.Target">
+            <summary>
+            The target of the method (the instance object where the method
+            belongs too), or null, if it is a static or an adapter method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ExpectedReturn.Checker">
+            <summary>
+            The checker to be called when the method return
+            arrives. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.ExpectedPreConstraint">
+            <summary>
+            A type to describe an expected pre constraint
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ExpectedPreConstraint.#ctor(System.Delegate)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="checker"></param>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.ExpectedPreConstraint.Checker">
+            <summary>
+            The checker to be called when test manager intend to check preconstraint attached to transition.
+            </summary>
+            <remarks>
+            The checker has no parameter or return value.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.CheckerCallingStyle">
+            <summary>
+            An enumeration indicating how to invoke a checker.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent">
+            <summary>
+            A type to describe an available event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent.#ctor(System.Reflection.EventInfo,System.Object,System.Object[])">
+            <summary>
+            Constructs a new <see cref="T:Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent"/>.
+            </summary>
+            <param name="eventInfo"></param>
+            <param name="target"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent.ToString">
+            <summary>
+            Delivers readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent.Event">
+            <summary>
+            The event identified by its
+            reflection representation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent.Target">
+            <summary>
+            The target of the event (the instance object where the event
+            belongs too), or null, if it is a static or an adapter event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.AvailableEvent.Parameters">
+            <summary>
+            The parameters passed to the event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.AvailableReturn">
+            <summary>
+            A type to describe an available return.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.AvailableReturn.ToString">
+            <summary>
+            Delivers readable representation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.AvailableReturn.Method">
+            <summary>
+            The method identifier by
+            its reflection representation,
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.AvailableReturn.Target">
+            <summary>
+            The target of the method (the instance object where the method
+            belongs too), or null, if it is a static or an adapter method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SpecExplorer.Runtime.Testing.AvailableReturn.Parameters">
+            <summary>
+            The parameters passed to the return.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.ObservationQueue`1">
+            <summary>
+            Implements a simple thread-safe queue used for observations like events and returns.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ObservationQueue`1.#ctor(System.Int32)">
+            <summary>
+            Constructs a queue with given maximal size.
+            </summary>
+            <param name="maxSize">This parameter is not effective for the current release.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ObservationQueue`1.Add(`0)">
+            <summary>
+            Adds an item to the queue. 
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ObservationQueue`1.TryGet(System.TimeSpan,System.Boolean,`0@)">
+            <summary>
+            Try gets an item from the queue.
+            </summary>
+            <param name="timeOut"></param>
+            <param name="consume"></param>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.ObservationQueue`1.GetEnumerator">
+            <summary>
+            Returns a copy of the queue content as a list. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.TestAdapterAttribute">
+            <summary>
+            An attribute which indicates to the Spec Explorer test code infrastructure
+            that a given class or interface and all its derivations represents a test adapter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.TestFailureException">
+            <summary>
+            An exception which is thrown when assertion failure is hit.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestFailureException.#ctor">
+            <summary>
+            Constructs the TestFailureException.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestFailureException.#ctor(System.String)">
+            <summary>
+            Constructs the TestFailureException.
+            </summary>
+            <param name="message">error message</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestFailureException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs the TestFailureException.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestFailureException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructs the TestFailureException.
+            </summary>
+            <param name="serializationInfo"></param>
+            <param name="streamingContext"></param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers">
+            <summary>
+            Helpers for dealing with test managers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.IsAdapter(System.Type)">
+            <summary>
+            Checks whether a given type represents a test adapter.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.Subscribe(Microsoft.SpecExplorer.Runtime.Testing.ITestManager,System.Object)">
+            <summary>
+            Subscribes all public events of a given object to the test manager.
+            </summary>
+            <param name="manager"></param>
+            <param name="adapter"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.Unsubscribe(Microsoft.SpecExplorer.Runtime.Testing.ITestManager,System.Object)">
+            <summary>
+            Unsubscribes all public events of a given object to the test manager.
+            </summary>
+            <param name="manager"></param>
+            <param name="adapter"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.Describe(System.Object)">
+            <summary>
+            Describes a value for test diagnostics.
+            </summary>
+            <param name="value">Value object</param>
+            <returns>String who describes the value</returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetDelegateParameterTypes(System.Type)">
+            <summary>
+            Gets the parameter types of a delegate.
+            </summary>
+            <param name="delegateType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetMethodParameterTypes(System.Reflection.MethodBase)">
+            <summary>
+            Gets the parameter types of a method.
+            </summary>
+            <param name="methodInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.RequiresTarget(System.Reflection.MemberInfo)">
+            <summary>
+            Checks whether an event requires a target object, which is the case
+            when it is instance based and when it is not originating from an adapter.
+            </summary>
+            <param name="memberInfo">reflection member info</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetEventCheckerCallingStyle(System.Reflection.EventInfo,System.Type)">
+            <summary>
+            Determines the way how to call a checker for an event. Calculates whether the event and checker
+            types are compatible, and whether to include the target in the call or not.
+            </summary>
+            <param name="eventInfo"></param>
+            <param name="checkerType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetReturnCheckerCallingStyle(System.Reflection.MethodBase,System.Type)">
+            <summary>
+            Determines the way how to call a checker for a return method event. Calculates whether the method and checker
+            types are compatible, and whether to include the target in the call or not.
+            </summary>
+            <param name="methodInfo"></param>
+            <param name="checkerType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.CallChecker(Microsoft.SpecExplorer.Runtime.Testing.CheckerCallingStyle,System.Delegate,System.Object,System.Object[])">
+            <summary>
+            Calls a checker according to the given calling style.
+            </summary>
+            <param name="style"></param>
+            <param name="checker"></param>
+            <param name="target"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.Generate(System.Reflection.EventInfo,System.Object,Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GenericEventHandler)">
+            <summary>
+            Generates a delegate object which matches the given event info's type and
+            calls the generic event processor.
+            </summary>
+            <param name="eventInfo">The event info for which to generate a matching delegate.</param>
+            <param name="target">The target instance.</param>
+            <param name="processor">The generic event processor to be called.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.UpdateEventHandlerProcessor(System.Delegate,Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GenericEventHandler)">
+            <summary>
+            Replace the internal generic processor of the given event handler
+            </summary>
+            <param name="eventHandler"></param>
+            <param name="newProcessor"></param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetFieldValueByName(System.Object,System.String)">
+            <summary>
+            Gets an object's field value by field name through reflection
+            </summary>
+            <param name="obj"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.Make``1(System.Collections.Generic.IDictionary{System.Reflection.FieldInfo,System.Object})">
+            <summary>
+            Creates a struct or compound value of type T with given field initialization.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="fields"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetMethodInfo(System.Type,System.String,System.Type[])">
+            <summary>
+            Return method info for given meta-data information. Throws exception if method cannot be resolved.
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <param name="parameterTypes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetConstructorInfo(System.Type,System.Type[])">
+            <summary>
+            Return constructor for given meta-data information. Throws exception if constructor cannot be resolved.
+            </summary>
+            <param name="type"></param>
+            <param name="parameterTypes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GetEventInfo(System.Type,System.String)">
+            <summary>
+            Return event for given meta-data information. Throws exception if event cannot be resolved.
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.Equality(System.Object,System.Object)">
+            <summary>
+            Equality helper class to compare whether two objects are equal.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.AssertAreEqual``1(Microsoft.SpecExplorer.Runtime.Testing.ITestManager,``0,``0,System.String)">
+            <summary>
+            Asserts two values are equal.
+            </summary>
+            <typeparam name="T">Type of values.</typeparam>
+            <param name="manager">The test manager.</param>
+            <param name="expected">The expected value.</param>
+            <param name="actual">The actual value.</param>
+            <param name="context">The description of the context under which both values are compared.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.AssertBind``1(Microsoft.SpecExplorer.Runtime.Testing.ITestManager,Microsoft.SpecExplorer.Runtime.Testing.IVariable{``0},``0,System.String)">
+            <summary>
+            Asserts a variable's equality to a value or bind the variable to a value if it hasn't been bound yet.
+            </summary>
+            <typeparam name="T">Type of the variable and value.</typeparam>
+            <param name="manager">The test manager.</param>
+            <param name="var">The variable.</param>
+            <param name="actual">The actual value.</param>
+            <param name="context">The description of the context under which the comparison or binding happens.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.AssertBind``1(Microsoft.SpecExplorer.Runtime.Testing.ITestManager,Microsoft.SpecExplorer.Runtime.Testing.IVariable{``0},Microsoft.SpecExplorer.Runtime.Testing.IVariable{``0},System.String)">
+            <summary>
+            Asserts equality of two variables, or bind one variable to another if only one of them is bound. 
+            If neither of the two variables are bound, this API does nothing.
+            </summary>
+            <typeparam name="T">Type of the variables.</typeparam>
+            <param name="manager">The test manager.</param>
+            <param name="v1">The first variable.</param>
+            <param name="v2">The second variable.</param>
+            <param name="context">The context under which the comparison or binding happens.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.AssertNotNull(Microsoft.SpecExplorer.Runtime.Testing.ITestManager,System.Object,System.String)">
+            <summary>
+            Asserts a value is not null.
+            </summary>
+            <param name="manager">The test manager.</param>
+            <param name="actual">The value under check.</param>
+            <param name="context">The context under which the value is checked.</param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.TestManagerHelpers.GenericEventHandler">
+            <summary>
+            A delegate type representing a generic event handler.
+            </summary>
+            <param name="eventInfo"></param>
+            <param name="target"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.TransactionFailedException">
+            <summary>
+            Class representing the exceptional case of a failed transaction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TransactionFailedException.#ctor">
+            <summary>
+            Constructs transaction failed exception
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TransactionFailedException.#ctor(System.String)">
+            <summary>
+            Constructs transaction failed exception
+            </summary>
+            <param name="message">The message text.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TransactionFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs transaction failed exception
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.TransactionFailedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructs transaction failed exception
+            </summary>
+        </member>
+        <member name="T:Microsoft.SpecExplorer.Runtime.Testing.UnboundVariableException">
+            <summary>
+            An exception which is thrown when variable is read before it is bound.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.UnboundVariableException.#ctor">
+            <summary>
+            Constructs the UnboundVariableException.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.UnboundVariableException.#ctor(System.String)">
+            <summary>
+            Constructs the UnboundVariableException.
+            </summary>
+            <param name="message">error message</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.UnboundVariableException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs the UnboundVariableException.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Microsoft.SpecExplorer.Runtime.Testing.UnboundVariableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructs the UnboundVariableException.
+            </summary>
+            <param name="serializationInfo"></param>
+            <param name="streamingContext"></param>
+        </member>
+    </members>
+</doc>
