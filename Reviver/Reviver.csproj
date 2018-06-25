@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.SpecExplorer.Core">
       <HintPath>C:\Program Files (x86)\Spec Explorer 2010\Microsoft.SpecExplorer.Core.dll</HintPath>
     </Reference>
+    <Reference Include="SpecExplorer">
+      <HintPath>..\SpecExplorer2010Binaries\SpecExplorer.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
