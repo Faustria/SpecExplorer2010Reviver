@@ -31,9 +31,99 @@ using Microsoft.Msagl.GraphViewerGdi;
 using Microsoft.Msagl.Drawing;
 using System.Windows;
 using System.Diagnostics;
+using Microsoft.SpecExplorer.CommandLine;
 
 namespace Reviver
 {
+	// Retrieving message-class for SpecExplorer application.
+    class SpecExplorerHost : Microsoft.SpecExplorer.IHost
+    {
+        public Microsoft.SpecExplorer.MessageResult DecisionDialog(string title, string message, Microsoft.SpecExplorer.MessageButton messageButton)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DiagMessage(Microsoft.SpecExplorer.DiagnosisKind kind, string message, object location)
+        {
+            Debug.Write(message); ;
+        }
+
+        public IWin32Window DialogOwner
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public Exception FatalError(string message, params Exception[] exceptions)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetService(Type type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Log(string line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Logging
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public DialogResult ModalDialog(Form form)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NavigateTo(string fileName, int line, int column)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NotificationDialog(string title, string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ProgressMessage(Microsoft.SpecExplorer.VerbosityLevel verbosity, string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public EventHandler Protect(EventHandler handler)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RecoverFromFatalError(Exception exception)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RunProtected(Microsoft.SpecExplorer.ProtectedAction action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryFindLocation(Microsoft.SpecExplorer.MemberInfo member, out Microsoft.SpecExplorer.TextLocation location)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetExtensionData(string key, object inputValue, out object outputValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Microsoft.SpecExplorer.VerbosityLevel Verbosity
+        {
+            get { throw new NotImplementedException(); }
+        }
+    }
+
     class Program
     {
     	// Spec Explorer binaries path.
@@ -47,20 +137,23 @@ namespace Reviver
     	// Example:	Reviver (@"D:\SymbolicTest\bin\Debug", "SymbolicTest.dll,Service.dll", "SymbolicTest.cord,Standard.cord","SymbolicFunctionTest");
     	static void Reviver (string WorkingDirectory, string ModelLibs, string CordScripts, string Machine)
     	{
+    		// Command line for shell-executable.
     		string Command =  
     			"/task:" + Enum.GetName(typeof (Commands), Commands.persistexploration) + " " + 
     			"/assemblies:" + ModelLibs + " "  +
     			"/scripts:" + CordScripts + " " +
     			"/machines:" + Machine;
+            
+    		// Command line for lib-interface.
+    		string[] CommandArray = new []{
+                "/task:" + Enum.GetName(typeof(Commands), Commands.persistexploration) + " " ,
+                "/assemblies:" + ModelLibs + " " ,
+                "/scripts:" + CordScripts + " " ,
+                "/machines:" + Machine};
+
     	
-    		// Start Spec Explorer.
-    		// Maybe replace this code by adding SpecExplorer.exe to the references
-			// And call it directly using:
-    		// SpecExplorer.ParseCommand(...);
-    		// SpecExplorer.LibDirectoryList = ...
-    		// In both cases output during exploration is only received at exploration end,
-    		// while SpecExplorer.exe outputs progression during exploration.
-			Process p = new Process();
+    		// Start SpecExplorer using shell.
+    		Process p = new Process();
 			p.StartInfo.FileName = SpecExplorer ;
 			p.StartInfo.Arguments = Command;
 			p.StartInfo.WorkingDirectory = WorkingDirectory;
@@ -69,7 +162,17 @@ namespace Reviver
 			p.Start();
  			string output = p.StandardOutput.ReadToEnd(); 			
  			Debug.Write(output);
-    	
+    	    
+    	   
+    	    // Start SpecExplorer using lib-interface.
+            /*
+    	    SpecExplorerHost Host = new SpecExplorerHost();
+            CommandLineParser Parser = new CommandLineParser(Host);
+            Parser.ParseCommand(CommandArray);
+            ConsoleHostDriver Driver = new ConsoleHostDriver(Host,Parser);
+            int i, j;
+            Driver.Run(out i, out j);
+            */
     	}
     	
     	
