@@ -10,8 +10,10 @@ The last small update to Microsoft Spec Explorer seen was in 2013 and today it i
 We need all users to talk about Spec Explorer, write publications and use it in as many projects as possible.
 
 See also: <br>
+https://msdn.microsoft.com/en-us/library/ee620518.aspx <br>
 Spec Explorer Forum: https://social.msdn.microsoft.com/Forums/en-US/home?forum=specexplorer <br>
 Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
+
 
 ![Screenshot1](Images/Viewer.jpg)
 
@@ -23,10 +25,10 @@ Microsoft Visual Studio Professional 2010 Version 10.0.30319.1 RTMREL<br>
 Microsoft Visual Studio Professional 2012 Version 11.0.50727.1 RTMREL<br>
 
 The reviver should compile and work in theory with any compiler targeting 
-Microsoft .NET Framework Version 4.0 on x86 out of the box.
+Microsoft .NET Framework Version 4.0 on x86 out of the box (see FAQ).
 
-All binaries are used from Spec Explorer for Visual Studio 2010 (version 3.5.3146.0) - included here for convenience.
-Please also download them yourself and unpack them from Microsoft MSI file: <br>
+All binaries are used from Spec Explorer for Visual Studio 2010 (version 3.5.3146.0) - included here only for convenience.
+It is very highly recommended to please download them yourself and unpack them from Microsoft MSI file (msiexec /a SpecExplorer.msi /qb TARGETDIR=C:\Data\): <br>
 https://marketplace.visualstudio.com/items?itemName=SpecExplorerTeam.SpecExplorer2010VisualStudioPowerTool-5089
 
 USAGE
