@@ -10,7 +10,7 @@ The last small update to Microsoft Spec Explorer seen was in 2013 and today it i
 We need all users to talk about Spec Explorer, write publications and use it in as many projects as possible.
 
 See also: <br>
-https://msdn.microsoft.com/en-us/library/ee620518.aspx <br>
+Spec Explorer Dokumentation: https://msdn.microsoft.com/en-us/library/ee620518.aspx <br>
 Spec Explorer Forum: https://social.msdn.microsoft.com/Forums/en-US/home?forum=specexplorer <br>
 Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
 
