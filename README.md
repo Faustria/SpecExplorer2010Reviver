@@ -20,11 +20,11 @@ Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
 REQUIREMENTS
 ======
 This tool here is the absolute bare minimal demo possible reviving the original Spec Explorer Plug-In binaries.
-Some binaries used are open source on Github like Z3, MSAGL and SpecSharp some are under closed source license like sXRT.  This reviver of course is only needed if you can't use one of the original IDE's (or the minor sub-version predecessors): <br>
+Some binaries used are open source on GitHub like Z3, MSAGL and SpecSharp some are under closed source license like sXRT.  This Reviver of course is only needed if you can't use one of the original IDE's (or the minor sub-version predecessors): <br>
 Microsoft Visual Studio Professional 2010 Version 10.0.30319.1 RTMREL<br>
 Microsoft Visual Studio Professional 2012 Version 11.0.50727.1 RTMREL<br>
 
-The reviver should compile and work in theory with any compiler targeting 
+The Reviver should compile and work in theory with any compiler targeting 
 Microsoft .NET Framework Version 4.0 on x86 out of the box (see FAQ).
 
 All binaries are used from Spec Explorer for Visual Studio 2010 (version 3.5.3146.0) - included here only for convenience.
@@ -78,9 +78,9 @@ Planned "improvements":
 * Add newer version of Z3, MSAGL and make use of new features not seen before (graph color, ...).
 * etc.
 
-Please help improve this tool and add your improvements at Github for reviving Spec Explorer gaining it's original strength. Don't hesitate to ask, change, add etc.
+Please help improve this tool and add your improvements at GitHub for reviving Spec Explorer gaining it's original strength. Don't hesitate to ask, change, add etc.
 
-The hope that anytime soon any comparable product from Microsoft will appear again is slim to zero. It seems that in industry a general climax in many fields mentioned here was reached and we are on a descent right now again.
+The hope that anytime soon any comparable product from Microsoft will appear again is slim to zero. 
 
 It would be nice not to get sued - everything here is licensed under MICROSOFT PRE-RELEASE SOFTWARE LICENSE TERMS. 
 All the credits go to Microsoft, the original Microsoft Spec Explorer Team and all the other supporting Microsoft employees and users.
