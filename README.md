@@ -19,7 +19,7 @@ Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
 
 REQUIREMENTS
 ======
-This tool here is the absolute bare minimal demo possible reviving the original Spec Explorer Plug-In binaries.
+This tool here is the absolute bare minimal demo possible reviving the original Spec Explorer plug-in binaries.
 Some binaries used are open source on GitHub like Z3, MSAGL and SpecSharp some are under closed source license like sXRT.  This Reviver of course is only needed if you can't use one of the original IDE's (or the minor sub-version predecessors): <br>
 Microsoft Visual Studio Professional 2010 Version 10.0.30319.1 RTMREL<br>
 Microsoft Visual Studio Professional 2012 Version 11.0.50727.1 RTMREL<br>
@@ -33,7 +33,7 @@ https://marketplace.visualstudio.com/items?itemName=SpecExplorerTeam.SpecExplore
 
 USAGE
 ======
-Try to compile a SpecExplorer demo-model: See the StaticModel-folder. <br>
+Try to compile a Spec Explorer demo-model: See the StaticModel-folder. <br>
 (Repair missing links to libraries using the binaries in the SpecExplorer2010Binaries-folder)
 
 Try to compile the Reviver and explore the demo-model-binaries using Spec Explorer 2010: See the Reviver-folder. <br>
@@ -43,12 +43,12 @@ Adapt all the absolute paths in main!)
 
 EPILOG
 ======
-Other very closely related fields are:
-Writing good requirements for software systems
-Programming of dynamic (embedded) systems
-Reverse engineering of (embedded) software
-Simulating dynamic systems for system engineering, prediction
-Quantitative model based safety analysis for (embedded) systems
+Other very closely related fields are:<br>
+Writing good requirements for software systems<br>
+Programming of dynamic (embedded) systems<br>
+Reverse engineering of (embedded) software<br>
+Simulating dynamic systems for system engineering, prediction<br>
+Quantitative model based safety analysis for (embedded) systems<br>
 
 These areas have in common that in industry in all of them some very tedious, painful steps are still done manually and it is very difficult to share or reuse work within a team and between them.
 Handling these problems is a minefield. Spec Explorer shows practical solutions to all these fields.
