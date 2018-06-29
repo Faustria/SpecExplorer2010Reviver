@@ -36,6 +36,7 @@ File list:
 27/06/2013  14:35            84,808 System.Compiler.Runtime.dll
 
 Info: the Spec Explorer executable above uses these libraries from .Net Framework 4.0:
+from this installation: https://www.microsoft.com/de-de/download/details.aspx?id=17718
 
 mscorlib.dll	4.7.3110.0 built by: NET472REL1LAST_C
 System.Windows.Forms.dll	4.7.3056.0 built by: NET472REL1
