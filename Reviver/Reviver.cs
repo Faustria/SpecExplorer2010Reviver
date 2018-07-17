@@ -65,7 +65,7 @@ namespace Reviver
 
         public void Log(string line)
         {
-            throw new NotImplementedException();
+        	Debug.Write(line);
         }
 
         public bool Logging
@@ -90,7 +90,7 @@ namespace Reviver
 
         public void ProgressMessage(Microsoft.SpecExplorer.VerbosityLevel verbosity, string message)
         {
-            throw new NotImplementedException();
+        	Debug.WriteLine(message);
         }
 
         public EventHandler Protect(EventHandler handler)
@@ -100,6 +100,7 @@ namespace Reviver
 
         public void RecoverFromFatalError(Exception exception)
         {
+            // Even correct execution can end here.
             throw new NotImplementedException();
         }
 
@@ -162,10 +163,14 @@ namespace Reviver
 			p.Start();
  			string output = p.StandardOutput.ReadToEnd(); 			
  			Debug.Write(output);
-    	    
-    	   
+
+			/* 			
     	    // Start SpecExplorer using lib-interface.
-            /*
+            // We have to add this to the *.exe.config 
+            // <startup useLegacyV2RuntimeActivationPolicy="true">
+            //       <supportedRuntime version="v4.0"/>
+            // </startup> to run!
+            // All binaries, model etc. must be in build directory!
     	    SpecExplorerHost Host = new SpecExplorerHost();
             CommandLineParser Parser = new CommandLineParser(Host);
             Parser.ParseCommand(CommandArray);
@@ -173,6 +178,7 @@ namespace Reviver
             int i, j;
             Driver.Run(out i, out j);
             */
+
     	}
     	
     	

@@ -3,7 +3,7 @@ Use Spec Explorer 2010
 
 PROLOG
 ======
-Spec Explorer 2010 is a symbolic code exploration tool based on sXRT. It shows an unseen combination and number of very practical solutions and patterns to many urgent problems in software development going far beyond it's intended use case. In it's intended use as Model-Based Testing tool it is finally giving testing a solid foundation and a maximum of automation based e.g. on the definition of alternating simulation and on symbolic execution.
+Spec Explorer 2010 is a symbolic code exploration tool based on XRTs. It shows an unseen combination and number of very practical solutions and patterns to many urgent problems in software development going far beyond it's intended use case. In it's intended use as Model-Based Testing tool it is finally giving testing a solid foundation and a maximum of automation based e.g. on the definition of alternating simulation and on symbolic execution.
 
 The last small update to Microsoft Spec Explorer seen was in 2013 and today it is way more than 5 years old. The then supported IDE: Microsoft Visual Studio Professional is not supported or even sold and downloadable any more: Only a small number of sub-releases were compatible with the plug-in due to its deep integration into the IDE. So today nearly anybody has access to a running Spec Explorer. We need to change this. We target at first students, teachers and experienced users.
 
