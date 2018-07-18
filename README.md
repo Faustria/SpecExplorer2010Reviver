@@ -20,7 +20,7 @@ Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
 REQUIREMENTS
 ======
 This tool here is the absolute bare minimal demo possible reviving the original Spec Explorer plug-in binaries.
-Some binaries used are open source on GitHub like Z3, MSAGL and SpecSharp some are under closed source license like sXRT.  This Reviver of course is only needed if you can't use one of the original IDE's (or the minor sub-version predecessors): <br>
+Some binaries used are open source on GitHub like Z3, MSAGL and SpecSharp some are under closed source license like XRTs.  This Reviver of course is only needed if you can't use one of the original IDE's (or the minor sub-version predecessors): <br>
 Microsoft Visual Studio Professional 2010 Version 10.0.30319.1 RTMREL<br>
 Microsoft Visual Studio Professional 2012 Version 11.0.50727.1 RTMREL<br>
 
