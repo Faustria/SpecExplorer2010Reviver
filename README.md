@@ -3,11 +3,10 @@ Use Spec Explorer 2010
 
 PROLOG
 ======
-Spec Explorer 2010 is a symbolic code exploration tool based on XRTs. It shows an unseen combination and number of very practical solutions and patterns to many urgent problems in software development going far beyond it's intended use case. In it's intended use as Model-Based Testing tool it is finally giving testing a solid foundation and a maximum of automation based e.g. on the definition of alternating simulation and on symbolic execution.
+Spec Explorer 2010 is a symbolic code exploration tool based on XRTs. 
+It can also translate .Net programs into constraint solver formulas and solves these equations using Z3.
 
-The last small update to Microsoft Spec Explorer seen was in 2013 and today it is way more than 5 years old. The then supported IDE: Microsoft Visual Studio Professional is not supported or even sold and downloadable any more: Only a small number of sub-releases were compatible with the plug-in due to its deep integration into the IDE. So today nearly anybody has access to a running Spec Explorer. We need to change this. We target at first students, teachers and experienced users.
-
-We need all users to talk about Spec Explorer, write publications and use it in as many projects as possible.
+Here we present a demo program which can run Spec Explorer from its open command interface and after that displays the exploration results using the Spec Explorer API. Generated test cases can also be executed with the stub code added as a zip file in the binaries-folder. As a side effect the demo can be fully executed even without the need of Visual Studio Professional. 
 
 See also: <br>
 Spec Explorer Dokumentation: https://msdn.microsoft.com/en-us/library/ee620518.aspx <br>
@@ -19,15 +18,19 @@ Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
 
 REQUIREMENTS
 ======
-This tool here is the absolute bare minimal demo possible reviving the original Spec Explorer plug-in binaries.
-Some binaries used are open source on GitHub like Z3, MSAGL and SpecSharp some are under closed source license like XRTs.  This Reviver of course is only needed if you can't use one of the original IDE's (or the minor sub-version predecessors): <br>
+This tool here is a minimal demo reviving the original Spec Explorer plug-in binaries.
+Some binaries used are even open source on GitHub like Z3, MSAGL and SpecSharp some are under closed source license like XRTs. 
+
+The original IDE's of the Spec Explorer plug-in are: <br>
 Microsoft Visual Studio Professional 2010 Version 10.0.30319.1 RTMREL<br>
 Microsoft Visual Studio Professional 2012 Version 11.0.50727.1 RTMREL<br>
 
-The Reviver should compile and work in theory with any compiler targeting 
-Microsoft .NET Framework Version 4.0 on x86 out of the box (see FAQ).
+With these IDE versions the Spec explorer plug-in can be installed directly. But it can be installed also on newer Visual Studio Professional versions using this guide: <br>
+https://github.com/philscrace2/SpecExplorer2010 
 
-All binaries are used from Spec Explorer for Visual Studio 2010 (version 3.5.3146.0) - included here only for convenience.
+This program here is compatible of course with these versions above but with adding just the binaries of the original plug-in it compiles and works with any compiler targeting Microsoft .NET Framework Version 4.0 (see FAQ).
+
+All binaries needed are used from Spec Explorer for Visual Studio 2010 (version 3.5.3146.0) - included here only for convenience.
 It is very highly recommended to please download them yourself and unpack them from Microsoft MSI file (msiexec /a SpecExplorer.msi /qb TARGETDIR=C:\Data\): <br>
 https://marketplace.visualstudio.com/items?itemName=SpecExplorerTeam.SpecExplorer2010VisualStudioPowerTool-5089
 
@@ -43,44 +46,9 @@ Adapt all the absolute paths in main!)
 
 EPILOG
 ======
-Other very closely related fields are:<br>
-Writing good requirements for software systems<br>
-Programming of dynamic (embedded) systems<br>
-Reverse engineering of (embedded) software<br>
-Simulating dynamic systems for system engineering, prediction<br>
-Quantitative model based safety analysis for (embedded) systems<br>
+This demo can display the explorerd states, but exporting the data is still a challenge.
+The state comparator is not added yet. 
+Usually you will open two IDE's: One for the Reviver and one for the model to be explored. This way you can debug the model if you connect a remote debugger with your model code.
 
-These areas have in common that in industry in all of them some very tedious, painful steps are still done manually and it is very difficult to share or reuse work within a team and between them.
-Handling these problems is a minefield. Spec Explorer shows practical solutions to all these fields.
-
-Writing good requirements:
-It is well known that a general way of defining requirements today is the syntax defined in the ISO 29148:2011. 
-This syntax is very similar to the guarded state update rules of Spec Explorer.
-It is shown how composition allows perfect team work using cord and components.
-
-Programming of (embedded) dynamic systems:
-Embedded systems urgently needed e.g. WCET (worst case execution time) estimation already during code implementation, we need to make quantitative analysis also for maximum allocation bringing automatic memory management to embedded software or safety and security to any software application. Symbolic exploration is a key enabler for this.
-
-Reverse engineering:
-The exploration and composition/slicing are a very interesting solution for reverse engineering of legacy code and to add additional documentation/information using slicing.
-
-Simulating dynamic systems:
-Spec Explorer can simulate DEV's (discrete event systems) and in comparison to Modelica uses a dynamic memory management etc.
-
-Quantitative model based safety analysis:
-Very interesting is the comparison with tools like Keymera.
-
-Planned "improvements":
-* Add again state/step viewer.
-* Add again state comparator.
-* Add again exploration manager.
-* Add again as plug-in into Visual Studio.
-* Add newer version of Z3, MSAGL and make use of new features not seen before (graph color, ...).
-* etc.
-
-Please help improve this tool and add your improvements at GitHub for reviving Spec Explorer gaining it's original strength. Don't hesitate to ask, change, add etc.
-
-The hope that anytime soon any comparable product from Microsoft will appear again is slim to zero. 
-
-It would be nice not to get sued - everything here is licensed under MICROSOFT PRE-RELEASE SOFTWARE LICENSE TERMS. 
+Everything here is licensed under MICROSOFT PRE-RELEASE SOFTWARE LICENSE TERMS. 
 All the credits go to Microsoft, the original Microsoft Spec Explorer Team and all the other supporting Microsoft employees and users.
