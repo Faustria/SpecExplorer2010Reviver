@@ -61,7 +61,7 @@ namespace Reviver
     class Program
     {
     	// Spec Explorer binaries path.
-    	public const string SpecExplorer = @"D:\Projekte\SpecExplorerBinaries\Specexplorer.exe";
+    	public const string SpecExplorer = @"D:\Projekte\Git_test\SpecExplorer2010Binaries\Specexplorer.exe";
     	
     	// Spec Explorer exploration result path.
     	public const string ExplorationResults ="ExplorationResults";
