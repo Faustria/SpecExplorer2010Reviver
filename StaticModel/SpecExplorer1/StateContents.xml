@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<StateContents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SharedEntities>
+    <SharedValues>
+      <SharedValues>accumulator</SharedValues>
+      <SharedValues>System.Int32</SharedValues>
+      <SharedValues>0</SharedValues>
+      <SharedValues>SpecExplorer1.AccumulatorModelProgram</SharedValues>
+      <SharedValues>#0</SharedValues>
+      <SharedValues>x == 2</SharedValues>
+      <SharedValues>Constraints</SharedValues>
+      <SharedValues>2</SharedValues>
+      <SharedValues>x == 1</SharedValues>
+      <SharedValues>1</SharedValues>
+      <SharedValues>4</SharedValues>
+      <SharedValues>3</SharedValues>
+      <SharedValues>ReturnValue</SharedValues>
+      <SharedValues>Thread#1</SharedValues>
+      <SharedValues>Stopped</SharedValues>
+    </SharedValues>
+    <SharedNodes>
+      <Node Kind="Value" Name="0" Type="1" Value="2" />
+      <Node Kind="Type" Name="3" Type="3">
+        <Nodes>
+          <Node Kind="NR" Value="0" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="1" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="4" Value="5" />
+      <Node Kind="Constraints" Name="6">
+        <Nodes>
+          <Node Kind="NR" Value="3" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="0" Type="1" Value="7" />
+      <Node Kind="Type" Name="3" Type="3">
+        <Nodes>
+          <Node Kind="NR" Value="5" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="4" />
+          <Node Kind="NR" Value="6" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="4" Value="8" />
+      <Node Kind="Constraints" Name="6">
+        <Nodes>
+          <Node Kind="NR" Value="8" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="0" Type="1" Value="9" />
+      <Node Kind="Type" Name="3" Type="3">
+        <Nodes>
+          <Node Kind="NR" Value="10" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="9" />
+          <Node Kind="NR" Value="11" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="6" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="11" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="0" Type="1" Value="10" />
+      <Node Kind="Type" Name="3" Type="3">
+        <Nodes>
+          <Node Kind="NR" Value="15" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="4" />
+          <Node Kind="NR" Value="16" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="0" Type="1" Value="11" />
+      <Node Kind="Type" Name="3" Type="3">
+        <Nodes>
+          <Node Kind="NR" Value="18" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="9" />
+          <Node Kind="NR" Value="19" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="4" />
+          <Node Kind="NR" Value="19" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="9" />
+          <Node Kind="NR" Value="6" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="16" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="19" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="12" Value="10" />
+      <Node Kind="Thread" Name="13" Value="14">
+        <Nodes>
+          <Node Kind="NR" Value="25" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="26" />
+          <Node Kind="NR" Value="1" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="12" Value="11" />
+      <Node Kind="Thread" Name="13" Value="14">
+        <Nodes>
+          <Node Kind="NR" Value="28" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="29" />
+          <Node Kind="NR" Value="1" />
+        </Nodes>
+      </Node>
+      <Node Kind="Value" Name="12" Value="7" />
+      <Node Kind="Thread" Name="13" Value="14">
+        <Nodes>
+          <Node Kind="NR" Value="31" />
+        </Nodes>
+      </Node>
+      <Node Kind="State">
+        <Nodes>
+          <Node Kind="NR" Value="32" />
+          <Node Kind="NR" Value="1" />
+        </Nodes>
+      </Node>
+    </SharedNodes>
+    <SharedObjects />
+  </SharedEntities>
+  <States>
+    <State Label="S0" Flags="Accepting" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(Sequence(BeforeStep(call Add),...),...))),Block(RuleMachine)))">
+      <Content Kind="NR" Value="2" />
+    </State>
+    <State Label="S1" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(return Add),...))),Block(RuleMachine))), InCall(Add)">
+      <Content Kind="NR" Value="7" />
+    </State>
+    <State Label="S2" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(return Add),...))),Block(RuleMachine))), InCall(Add)">
+      <Content Kind="NR" Value="12" />
+    </State>
+    <State Label="S3" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(Sequence(BeforeStep(call Add),...),...))),Block(RuleMachine)))">
+      <Content Kind="NR" Value="13" />
+    </State>
+    <State Label="S4" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(Sequence(BeforeStep(call Add),...),...))),Block(RuleMachine)))">
+      <Content Kind="NR" Value="14" />
+    </State>
+    <State Label="S5" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(return Add),...))),Block(RuleMachine))), InCall(Add)">
+      <Content Kind="NR" Value="17" />
+    </State>
+    <State Label="S6" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(return Add),...))),Block(RuleMachine))), InCall(Add)">
+      <Content Kind="NR" Value="20" />
+    </State>
+    <State Label="S7" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(return Add),...))),Block(RuleMachine))), InCall(Add)">
+      <Content Kind="NR" Value="21" />
+    </State>
+    <State Label="S8" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(return Add),...))),Block(RuleMachine))), InCall(Add)">
+      <Content Kind="NR" Value="22" />
+    </State>
+    <State Label="S9" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(call ReadAndReset),...))),Block(RuleMachine)))">
+      <Content Kind="NR" Value="23" />
+    </State>
+    <State Label="S10" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(call ReadAndReset),...))),Block(RuleMachine)))">
+      <Content Kind="NR" Value="24" />
+    </State>
+    <State Label="S11" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(Sequence(BeforeStep(call ReadAndReset),...))),Block(RuleMachine)))">
+      <Content Kind="NR" Value="13" />
+    </State>
+    <State Label="S12" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(BeforeStep(return ReadAndReset))),Block(RuleMachine))), InCall(ReadAndReset)">
+      <Content Kind="NR" Value="27" />
+    </State>
+    <State Label="S13" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(BeforeStep(return ReadAndReset))),Block(RuleMachine))), InCall(ReadAndReset)">
+      <Content Kind="NR" Value="30" />
+    </State>
+    <State Label="S14" Flags="None" Description="Block(Parallel(FullySynchronized,Block(Loop(BeforeStep(return ReadAndReset))),Block(RuleMachine))), InCall(ReadAndReset)">
+      <Content Kind="NR" Value="33" />
+    </State>
+  </States>
+</StateContents>

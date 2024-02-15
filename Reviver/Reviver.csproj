@@ -44,11 +44,18 @@
     <Reference Include="Microsoft.SpecExplorer.Core">
       <HintPath>C:\Program Files (x86)\Spec Explorer 2010\Microsoft.SpecExplorer.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SpecExplorer.ObjectModel">
+      <HintPath>..\SpecExplorer2010Binaries\Microsoft.SpecExplorer.ObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrt">
+      <HintPath>..\SpecExplorer2010Binaries\Microsoft.Xrt.dll</HintPath>
+    </Reference>
     <Reference Include="SpecExplorer">
       <HintPath>..\SpecExplorer2010Binaries\SpecExplorer.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,8 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleWindow.cs" />
     <Compile Include="Reviver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecExplorerHost.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
