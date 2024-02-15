@@ -10,7 +10,6 @@ Here we present a demo program which can run Spec Explorer from its open command
 
 See also: <br>
 Spec Explorer Dokumentation: https://msdn.microsoft.com/en-us/library/ee620518.aspx <br>
-Spec Explorer Forum: https://social.msdn.microsoft.com/Forums/en-US/home?forum=specexplorer <br>
 Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
 
 
