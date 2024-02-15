@@ -15,8 +15,8 @@ Spec Explorer Blog: https://blogs.msdn.microsoft.com/specexplorer/
 
 
 ![Screenshot1](Images/Viewer.jpg)
-![Screenshot1](Images/States.jpg)
-![Screenshot1](Images/Log.jpg)
+![Screenshot2](Images/States.JPG)
+![Screenshot3](Images/Log.JPG)
 
 
 REQUIREMENTS
