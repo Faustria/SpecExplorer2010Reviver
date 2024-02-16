@@ -1,7 +1,9 @@
-﻿    
-//using Microsoft.SpecExplorer.CommandLine;
+﻿using System;
+using System.Windows.Forms;
+using System.Diagnostics;
+// using Microsoft.SpecExplorer.CommandLine;
+    
 // Retrieving message-class for SpecExplorer application.
-
 namespace Reviver
 {
     /*

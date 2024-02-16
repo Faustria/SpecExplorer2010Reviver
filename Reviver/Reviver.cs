@@ -55,6 +55,7 @@ using System.Windows;
 using System.Diagnostics;
 using Microsoft.SpecExplorer.ObjectModel;
 using System.IO;
+//using Microsoft.SpecExplorer.CommandLine;
 
 namespace Reviver
 {
