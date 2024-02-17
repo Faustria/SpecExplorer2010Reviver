@@ -50,7 +50,6 @@ EPILOG
 ======
 This demo can display the explorerd states, but exporting the data is still a challenge.
 The state comparator is not added yet. 
-Usually you will open two IDE's: One for the Reviver and one for the model to be explored. This way you can debug the model if you connect a remote debugger with your model code.
 
 Everything here is licensed under MICROSOFT PRE-RELEASE SOFTWARE LICENSE TERMS. 
 All the credits go to Microsoft, the original Microsoft Spec Explorer Team and all the other supporting Microsoft employees and users.
