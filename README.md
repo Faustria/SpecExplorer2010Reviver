@@ -48,7 +48,7 @@ Adapt all the absolute paths in main!)
 
 EPILOG
 ======
-This demo can display the explorerd states, but exporting the data is still a challenge.
+This demo can display the explored states, but exporting this state data is still a challenge.
 The state comparator is not added yet. 
 
 Everything here is licensed under MICROSOFT PRE-RELEASE SOFTWARE LICENSE TERMS. 
