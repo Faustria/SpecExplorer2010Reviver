@@ -81,6 +81,7 @@ namespace Reviver
 
     	// LogViewer Form.
     	private static Form frmLogViewer;
+    	private static TextBox tbLogText;
     	
     	// Exploration state result control.
     	private static Microsoft.Xrt.UI.StateBrowserControl sbcStateControl;
@@ -244,9 +245,7 @@ namespace Reviver
     	static void ShowLogView (string Directory)
     	{
     		// The XRT log file for the z3 commands can be enabeld via xrt.config switch.
-			// <D>
-            //    "Z3LogFilePath=z3.log"
-            // </D>
+			// Select here the log file you are interested in.
     		string sZ3LogFile = Directory + BinFolder + "\\z3.log";
     		string sContents;
     		
@@ -264,7 +263,7 @@ namespace Reviver
             frmLogViewer = new Form();
             frmLogViewer.SuspendLayout();
            
-            TextBox tbLogText = new TextBox();
+            tbLogText = new TextBox();
             
             
             tbLogText.ScrollBars = ScrollBars.Both;
@@ -285,9 +284,17 @@ namespace Reviver
             frmLogViewer.Size = new System.Drawing.Size(424,100);
             frmLogViewer.ResumeLayout();
             frmLogViewer.Show();    		
-    		frmLogViewer.Refresh();    	
+    		frmLogViewer.Refresh(); 
+
+    		// Set the resize event.
+    		frmLogViewer.Resize += new EventHandler(ResizeLogViewer);
     	}
 
+    	// Logviewer resize event.
+    	static void ResizeLogViewer(object sender, EventArgs e)
+		{
+    		 tbLogText.Size = frmLogViewer.Size-new System.Drawing.Size(24,50);
+		}    
     	
     	// Open all windows with exploration graph, state data, log results.
     	static void Viewer (string Directory, string Machine)
